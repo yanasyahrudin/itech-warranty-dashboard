@@ -64,6 +64,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // QR Code Management
     Route::prefix('qr-code')->name('qr-code.')->group(function () {
         Route::get('/', [QrCodeController::class, 'index'])->name('index');
+        Route::get('/preview', [QrCodeController::class, 'preview'])->name('preview');
         Route::get('/download', [QrCodeController::class, 'download'])->name('download');
     });
     

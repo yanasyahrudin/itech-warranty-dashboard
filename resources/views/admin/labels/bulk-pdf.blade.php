@@ -4,122 +4,139 @@
 <head>
     <meta charset="utf-8">
     <title>Bulk Product Labels</title>
+
     <style>
         @page {
-            margin: 0.5cm;
+            margin: 10px;
             size: landscape;
         }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: DejaVu Sans, Arial, sans-serif;
         }
+
+        /* WRAPPER LABEL */
         .label-container {
-            width: 10cm;
-            height: 5cm;
-            border: 2px solid #333;
-            padding: 0.5cm;
+            width: 100mm;
+            height: 50mm;
+            border: 1px solid #000;
             box-sizing: border-box;
-            display: table;
+            margin-bottom: 8mm;
+            padding: 3mm;
+            position: relative;
             page-break-inside: avoid;
-            margin-bottom: 0.5cm;
         }
-        .label-content {
-            display: table-row;
+
+        /* FLEX LAYOUT AGAR STABIL */
+        .label-flex {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
         }
+
+        /* QR SECTION */
         .qr-section {
-            display: table-cell;
-            width: 40%;
+            width: 35mm;
             text-align: center;
-            vertical-align: middle;
+            padding-right: 3mm;
             border-right: 1px solid #ccc;
-            padding-right: 0.3cm;
         }
+
         .qr-section svg {
-            width: 3.5cm;
-            height: 3.5cm;
+            width: 30mm !important;
+            height: 30mm !important;
         }
+
         .qr-text {
-            font-size: 8pt;
-            color: #666;
-            margin-top: 5px;
+            font-size: 7pt;
+            margin-top: 2mm;
+            color: #555;
         }
+
+        /* INFO SECTION */
         .info-section {
-            display: table-cell;
-            width: 60%;
-            vertical-align: middle;
-            padding-left: 0.4cm;
+            flex: 1;
+            padding-left: 3mm;
         }
-        .field {
-            margin-bottom: 0.25cm;
-        }
+
         .field-label {
             font-size: 7pt;
-            color: #666;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            color: #666;
+            margin-bottom: 1mm;
         }
+
         .field-value {
-            font-size: 11pt;
+            font-size: 10pt;
             font-weight: bold;
-            color: #000;
+            margin-bottom: 2mm;
+            line-height: 1.1;
+            word-break: break-word;
         }
-        .field-value.large {
-            font-size: 13pt;
-        }
-        .field-value.medium {
-            font-size: 9pt;
-        }
+
+        .large { font-size: 12pt; }
+        .medium { font-size: 9pt; }
+
         .serial-number {
-            background: #f0f0f0;
-            padding: 3px 6px;
+            background: #efefef;
+            padding: 2px 4px;
             border-radius: 3px;
-            font-family: 'Courier New', monospace;
+            font-family: "Courier New", monospace;
         }
+
+        /* Warranty Section */
         .warranty-info {
-            margin-top: 0.2cm;
-            padding-top: 0.15cm;
-            border-top: 1px solid #e0e0e0;
+            position: absolute;
+            bottom: 2mm;
+            left: 40mm;
+            right: 3mm;
             font-size: 7pt;
-            color: #444;
+            padding-top: 2mm;
+            border-top: 1px solid #ccc;
+            color: #333;
         }
     </style>
 </head>
+
 <body>
-    @foreach($labels as $label)
-        <div class="label-container">
-            <div class="label-content">
-                <!-- QR Code Section -->
-                <div class="qr-section">
-                    {!! $qrCode !!}
-                    <div class="qr-text">Scan for Warranty</div>
+@foreach($labels as $label)
+    <div class="label-container">
+        <div class="label-flex">
+
+            <!-- QR CODE (unique per label) -->
+            <div class="qr-section">
+                {!! $qrCode !!}
+                <div class="qr-text">Scan for Warranty</div>
+            </div>
+
+            <!-- PRODUCT INFO -->
+            <div class="info-section">
+
+                <div class="field">
+                    <div class="field-label">Part Number</div>
+                    <div class="field-value large">{{ $label['product']->part_number }}</div>
                 </div>
-                
-                <!-- Product Info Section -->
-                <div class="info-section">
-                    <div class="field">
-                        <div class="field-label">Part Number</div>
-                        <div class="field-value large">{{ $label['product']->part_number }}</div>
-                    </div>
-                    
-                    <div class="field">
-                        <div class="field-label">Product Name</div>
-                        <div class="field-value medium">{{ $label['product']->name }}</div>
-                    </div>
-                    
-                    <div class="field">
-                        <div class="field-label">Serial Number</div>
-                        <div class="field-value medium serial-number">{{ $label['serial_number'] }}</div>
-                    </div>
-                    
-                    <div class="warranty-info">
-                        <strong>Type:</strong> {{ $label['product']->type }} | 
-                        <strong>Warranty:</strong> {{ $label['product']->warranty_period_months }} months
-                    </div>
+
+                <div class="field">
+                    <div class="field-label">Product Name</div>
+                    <div class="field-value medium">{{ $label['product']->name }}</div>
                 </div>
+
+                <div class="field">
+                    <div class="field-label">Serial Number</div>
+                    <div class="field-value medium serial-number">{{ $label['serial_number'] }}</div>
+                </div>
+
             </div>
         </div>
-    @endforeach
+
+        <div class="warranty-info">
+            <strong>Type:</strong> {{ $label['product']->type }} |
+            <strong>Warranty:</strong> {{ $label['product']->warranty_period_months }} months
+        </div>
+    </div>
+@endforeach
 </body>
 </html>

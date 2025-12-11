@@ -3,7 +3,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Product Label Generator') }}
+                {{ __('Generator Label Produk') }}
             </h2>
         </div>
     </x-slot>
@@ -20,16 +20,16 @@
                         </svg>
                     </div>
                     <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-blue-900 mb-2">Universal QR Code System</h3>
+                        <h3 class="text-lg font-semibold text-blue-900 mb-2">Sistem QR Code Universal</h3>
                         <p class="text-sm text-blue-800 mb-2">
-                            All products use the <strong>same QR code</strong> that links to the warranty registration form.
+                            Semua produk menggunakan <strong>kode QR yang sama</strong> yang terhubung ke formulir registrasi garansi.
                         </p>
                         <div class="bg-white rounded p-3 mt-3 border border-blue-200">
-                            <p class="text-xs text-gray-600 mb-1">Universal QR Code URL:</p>
+                            <p class="text-xs text-gray-600 mb-1">URL QR Code Universal:</p>
                             <code class="text-sm text-blue-700 font-mono">{{ route('warranty.register') }}</code>
                         </div>
                         <p class="text-xs text-blue-700 mt-3">
-                            📦 Each label includes: QR Code + Product Details (Name, Part Number, Type)
+                            📦 Setiap label mencakup: QR Code + Detail Produk (Nama, Nomor Part, Tipe)
                         </p>
                     </div>
                 </div>
@@ -38,30 +38,30 @@
             <!-- Bulk Generate Card -->
             <div class="mb-6 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🏷️ Bulk Label Generator</h3>
-                    <p class="text-sm text-gray-600 mb-4">Select multiple products and generate labels in bulk</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🏷️ Generator Label Massal</h3>
+                    <p class="text-sm text-gray-600 mb-4">Pilih beberapa produk dan buat label secara massal</p>
                     
                     <form method="POST" action="{{ route('admin.labels.bulk-generate') }}" id="bulkForm">
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                                    Quantity per Product
+                                    Jumlah per Produk
                                 </label>
                                 <input type="number" name="quantity" value="10" min="1" max="100"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required>
-                                <p class="text-xs text-gray-500 mt-1">Number of labels to generate for each selected product</p>
+                                <p class="text-xs text-gray-500 mt-1">Jumlah label yang akan dibuat untuk setiap produk yang dipilih</p>
                             </div>
                         </div>
                         
                         <div class="flex items-center justify-between">
                             <div class="text-sm text-gray-600">
-                                <span id="selectedCount">0</span> product(s) selected
+                                <span id="selectedCount">0</span> produk dipilih
                             </div>
                             <button type="submit" id="bulkGenerateBtn" disabled
                                 class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
-                                📄 Generate Bulk PDF
+                                📄 Buat PDF Massal
                             </button>
                         </div>
                     </form>
@@ -71,7 +71,7 @@
             <!-- Products Table -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Product List</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Daftar Produk</h3>
 
                     @if($products->count())
                         <div class="overflow-x-auto">
@@ -84,11 +84,11 @@
                                                 onchange="toggleSelectAll(this)">
                                         </th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Part Number</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Name</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Warranty</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Produk</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stok</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Garansi</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -114,20 +114,20 @@
                                                 <div class="text-sm text-gray-900">{{ number_format($product->stock_quantity) }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $product->warranty_period_months }} months</div>
+                                                <div class="text-sm text-gray-900">{{ $product->warranty_period_months }} bulan</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                                <div class="flex space-x-2">
+                                                <div class="flex space-x-2 gap-2">
                                                     <a href="{{ route('admin.labels.generate', $product) }}" 
                                                         class="text-indigo-600 hover:text-indigo-900 font-medium"
                                                         title="Preview Label">
-                                                        👁️ Preview
+                                                        Lihat
                                                     </a>
                                                     <span class="text-gray-300">|</span>
                                                     <a href="{{ route('admin.labels.download', $product) }}" 
                                                         class="text-green-600 hover:text-green-900 font-medium"
                                                         title="Download PDF">
-                                                        📥 PDF
+                                                        PDF
                                                     </a>
                                                 </div>
                                             </td>

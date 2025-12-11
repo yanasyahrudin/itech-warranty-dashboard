@@ -1,123 +1,136 @@
-<!-- filepath: resources/views/admin/labels/pdf.blade.php -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Product Label - {{ $product->part_number }}</title>
-    <style>
-        @page {
-            margin: 0;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        .label-container {
-            width: 10cm;
-            height: 5cm;
-            border: 2px solid #333;
-            padding: 0.5cm;
-            box-sizing: border-box;
-            display: table;
-        }
-        .label-content {
-            display: table-row;
-        }
-        .qr-section {
-            display: table-cell;
-            width: 40%;
-            text-align: center;
-            vertical-align: middle;
-            border-right: 1px solid #ccc;
-            padding-right: 0.3cm;
-        }
-        .qr-section svg {
-            width: 3.5cm;
-            height: 3.5cm;
-        }
-        .qr-text {
-            font-size: 8pt;
-            color: #666;
-            margin-top: 5px;
-        }
-        .info-section {
-            display: table-cell;
-            width: 60%;
-            vertical-align: middle;
-            padding-left: 0.4cm;
-        }
-        .field {
-            margin-bottom: 0.3cm;
-        }
-        .field-label {
-            font-size: 7pt;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        .field-value {
-            font-size: 11pt;
-            font-weight: bold;
-            color: #000;
-        }
-        .field-value.large {
-            font-size: 14pt;
-        }
-        .field-value.medium {
-            font-size: 10pt;
-        }
-        .warranty-info {
-            margin-top: 0.3cm;
-            padding-top: 0.2cm;
-            border-top: 1px solid #e0e0e0;
-            font-size: 8pt;
-            color: #444;
-        }
-        .footer {
-            text-align: center;
-            font-size: 7pt;
-            color: #999;
-            margin-top: 0.2cm;
-        }
-    </style>
+
+<style>
+    @page {
+        size: 100mm 50mm;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: DejaVu Sans, Arial, sans-serif;
+        position: relative;
+        width: 100mm;
+        height: 50mm;
+    }
+
+    /* BORDER */
+    .border-box {
+        position: absolute;
+        top: 2mm;
+        left: 2mm;
+        width: 96mm;
+        height: 46mm;
+        border: 1px solid #000;
+    }
+
+    /* QR AREA */
+    .qr {
+        position: absolute;
+        top: 5mm;
+        left: 5mm;
+        width: 32mm;
+        height: 32mm;
+        text-align: center;
+    }
+
+    .qr svg {
+        width: 30mm !important;
+        height: 30mm !important;
+    }
+
+    .qr-text {
+        font-size: 7pt;
+        margin-top: 1mm;
+    }
+
+    /* TEXT AREA */
+    .info {
+        position: absolute;
+        top: 5mm;
+        left: 42mm;
+        width: 53mm;
+        height: 40mm;
+    }
+
+    .field-label {
+        font-size: 7pt;
+        color: #555;
+        text-transform: uppercase;
+        margin-bottom: 0.5mm;
+    }
+
+    .field-value {
+        font-size: 10pt;
+        font-weight: bold;
+        margin-bottom: 2mm;
+        white-space: normal;          /* ALLOW WRAP */
+        word-break: break-word;       /* BREAK LONG WORDS */
+        line-height: 1.1;             /* Tighter spacing */
+    }
+
+    .large { font-size: 12pt; }
+    .medium { font-size: 9pt; }
+
+    .warranty {
+        position: absolute;
+        bottom: 1mm;
+        font-size: 8pt;
+        width: 50mm;
+        border-top: 1px solid #ccc;
+        padding-top: 1mm;
+    }
+
+    /* FOOTER */
+    .footer {
+        position: absolute;
+        bottom: -6mm;
+        width: 100mm;
+        text-align: center;
+        font-size: 6.5pt;
+        color: #777;
+    }
+</style>
+
 </head>
+
 <body>
-    <div class="label-container">
-        <div class="label-content">
-            <!-- QR Code Section -->
-            <div class="qr-section">
-                {!! $qrCode !!}
-                <div class="qr-text">Scan for Warranty</div>
-            </div>
-            
-            <!-- Product Info Section -->
-            <div class="info-section">
-                <div class="field">
-                    <div class="field-label">Part Number</div>
-                    <div class="field-value large">{{ $product->part_number }}</div>
-                </div>
-                
-                <div class="field">
-                    <div class="field-label">Product Name</div>
-                    <div class="field-value medium">{{ $product->name }}</div>
-                </div>
-                
-                <div class="field">
-                    <div class="field-label">Type</div>
-                    <div class="field-value medium">{{ $product->type }}</div>
-                </div>
-                
-                <div class="warranty-info">
-                    <strong>Warranty:</strong> {{ $product->warranty_period_months }} months
-                </div>
-            </div>
-        </div>
+
+<div class="border-box"></div>
+
+<div class="qr">
+    {!! $qrCode !!}
+    <div class="qr-text">Scan for Warranty</div>
+</div>
+
+<div class="info">
+
+    <div class="field-label">Part Number</div>
+    <div class="field-value large">{{ $product->part_number }}</div>
+
+    <div class="field-label">Product Name</div>
+    <div class="field-value medium">{{ $product->name }}</div>
+
+    <div class="field-label">Type</div>
+    <div class="field-value medium">{{ $product->type }}</div>
+
+    <div class="field-label">Serial Number</div>
+    <div class="field-value medium">{{ $product->serial_number }}</div>
+
+    <div class="warranty">
+        <strong>Warranty:</strong> {{ $product->warranty_period_months }} months
     </div>
-    
-    <div class="footer">
-        iTech Warranty System | {{ $qrCodeUrl }}
-    </div>
+
+</div>
+
+<div class="footer">
+    Itech Warranty System | {{ $qrCodeUrl }}
+</div>
+
 </body>
 </html>

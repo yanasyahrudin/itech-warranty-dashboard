@@ -23,16 +23,18 @@ Admin dapat input data barang masuk dengan field:
 
 Setelah disubmit:
 - Sistem mencatat stok produk di database.
-- **QR Code universal tetap sama untuk semua produk**.
-- Admin dapat download **QR Code universal** untuk ditempel di semua produk (PNG/PDF).
+- Sistem meng-generate Serial Number unik sesuai quantity.
+- Admin dapat mencetak daftar Serial Number untuk ditempel pada masing-masing unit produk.
+- QR Code universal tetap sama untuk semua produk.
+- Admin dapat download Universal QR Code untuk ditempel di semua unit produk.
 
-### Generate Product Label (QR Universal + Detail Produk)
+### **Generate Product Label**
 Admin dapat mengunduh label produk yang berisi:
 - QR Code Universal
 - Nama Produk
 - Tipe Produk
 - Part Number
-- Serial Number
+- Serial Number unik hasil generate warehouse
 Label ini digunakan untuk ditempel pada unit produk masing-masing.
 ---
 

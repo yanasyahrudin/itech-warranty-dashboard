@@ -7,7 +7,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="{{ route('admin.products.update', $product) }}">
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-700">Product Name</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nama Produk</label>
                             <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('name') border-red-500 @enderror" required>
                             @error('name')
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="type" class="block text-sm font-medium text-gray-700">Product Type</label>
+                            <label for="type" class="block text-sm font-medium text-gray-700">Tipe Produk</label>
                             <input type="text" name="type" id="type" value="{{ old('type', $product->type) }}" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('type') border-red-500 @enderror" required>
                             @error('type')
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="warranty_period_months" class="block text-sm font-medium text-gray-700">Warranty Period (Months)</label>
+                            <label for="warranty_period_months" class="block text-sm font-medium text-gray-700">Periode Garansi (Bulan)</label>
                             <input type="number" name="warranty_period_months" id="warranty_period_months" value="{{ old('warranty_period_months', $product->warranty_period_months) }}" min="1"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('warranty_period_months') border-red-500 @enderror" required>
                             @error('warranty_period_months')
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                            <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
                             <textarea name="description" id="description" rows="4" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('description') border-red-500 @enderror">{{ old('description', $product->description) }}</textarea>
                             @error('description')
@@ -61,10 +61,10 @@
 
                         <div class="flex items-center justify-end gap-4">
                             <a href="{{ route('admin.products.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                                Cancel
+                                Batal
                             </a>
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 rounded">
-                                Update Product
+                                Perbarui Produk
                             </button>
                         </div>
                     </form>

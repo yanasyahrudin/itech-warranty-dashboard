@@ -3,10 +3,10 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Warranty Registration Detail') }}
+                {{ __('Detail Registrasi Garansi') }}
             </h2>
             <a href="{{ route('admin.warranty.index') }}" class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">
-                ← Back to List
+                ← Kembali ke Daftar
             </a>
         </div>
     </x-slot>
@@ -40,15 +40,15 @@
                                 <div>
                                     @if($registration->status === 'pending')
                                         <span class="px-4 py-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                            Pending Review
+                                            Menunggu Review
                                         </span>
                                     @elseif($registration->status === 'approved')
                                         <span class="px-4 py-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            Approved
+                                            Disetujui
                                         </span>
                                     @else
                                         <span class="px-4 py-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                            Rejected
+                                            Ditolak
                                         </span>
                                     @endif
                                 </div>
@@ -59,41 +59,41 @@
                     <!-- Registration Information -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Registration Information</h4>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Informasi Registrasi</h4>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Product Info -->
                                 <div>
-                                    <h5 class="text-sm font-semibold text-gray-700 mb-3">Product Details</h5>
+                                    <h5 class="text-sm font-semibold text-gray-700 mb-4">Detail Produk</h5>
                                     <dl class="space-y-3">
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Product Name</dt>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Nama Produk</dt>
                                             <dd class="text-sm text-gray-900">{{ $registration->product->name }}</dd>
                                         </div>
-                                        <div>
+                                        <div class="mb-4">
                                             <dt class="text-xs font-medium text-gray-500 uppercase">Part Number</dt>
                                             <dd class="text-sm text-gray-900">{{ $registration->product->part_number }}</dd>
                                         </div>
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Product Type</dt>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Tipe Produk</dt>
                                             <dd class="text-sm text-gray-900">{{ $registration->product->type }}</dd>
                                         </div>
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Warranty Period</dt>
-                                            <dd class="text-sm text-gray-900">{{ $registration->product->warranty_period_months }} months</dd>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Periode Garansi</dt>
+                                            <dd class="text-sm text-gray-900">{{ $registration->product->warranty_period_months }} bulan</dd>
                                         </div>
                                     </dl>
                                 </div>
 
                                 <!-- Customer Info -->
                                 <div>
-                                    <h5 class="text-sm font-semibold text-gray-700 mb-3">Customer Details</h5>
+                                    <h5 class="text-sm font-semibold text-gray-700 mb-3">Detail Pelanggan</h5>
                                     <dl class="space-y-3">
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Customer Name</dt>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Nama Pelanggan</dt>
                                             <dd class="text-sm text-gray-900">{{ $registration->customer_name }}</dd>
                                         </div>
-                                        <div>
+                                        <div class="mb-4">
                                             <dt class="text-xs font-medium text-gray-500 uppercase">Email</dt>
                                             <dd class="text-sm text-gray-900">
                                                 <a href="mailto:{{ $registration->customer_email }}" class="text-indigo-600 hover:text-indigo-900">
@@ -101,16 +101,16 @@
                                                 </a>
                                             </dd>
                                         </div>
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Phone</dt>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Telepon</dt>
                                             <dd class="text-sm text-gray-900">
                                                 <a href="tel:{{ $registration->customer_phone }}" class="text-indigo-600 hover:text-indigo-900">
                                                     {{ $registration->customer_phone }}
                                                 </a>
                                             </dd>
                                         </div>
-                                        <div>
-                                            <dt class="text-xs font-medium text-gray-500 uppercase">Registration Date</dt>
+                                        <div class="mb-4">
+                                            <dt class="text-xs font-medium text-gray-500 uppercase">Tanggal Registrasi</dt>
                                             <dd class="text-sm text-gray-900">{{ $registration->created_at->format('d M Y H:i') }}</dd>
                                         </div>
                                     </dl>
@@ -129,7 +129,7 @@
                     <!-- Invoice Preview -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Invoice Document</h4>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Dokumen Invoice</h4>
                             
                             @if($registration->invoice_path)
                                 <div class="border rounded-lg p-4 bg-gray-50">
@@ -160,7 +160,7 @@
                                     @endif
                                 </div>
                             @else
-                                <p class="text-sm text-gray-500">No invoice uploaded</p>
+                                <p class="text-sm text-gray-500">Tidak ada invoice yang diunggah</p>
                             @endif
                         </div>
                     </div>
@@ -169,17 +169,17 @@
                     @if($registration->status === 'approved')
                         <div class="bg-blue-50 border-2 border-blue-200 overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6">
-                                <h4 class="text-lg font-semibold text-blue-900 mb-4">Warranty Coverage</h4>
+                                <h4 class="text-lg font-semibold text-blue-900 mb-4">Cakupan Garansi</h4>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div class="bg-white p-4 rounded-lg border border-blue-200">
-                                        <dt class="text-xs font-medium text-blue-600 uppercase">Start Date</dt>
+                                        <dt class="text-xs font-medium text-blue-600 uppercase">Tanggal Mulai</dt>
                                         <dd class="text-xl font-semibold text-blue-900 mt-1">
                                             {{ $registration->warranty_start_date->format('d M Y') }}
                                         </dd>
                                     </div>
                                     <div class="bg-white p-4 rounded-lg border border-blue-200">
-                                        <dt class="text-xs font-medium text-blue-600 uppercase">End Date</dt>
+                                        <dt class="text-xs font-medium text-blue-600 uppercase">Tanggal Selesai</dt>
                                         <dd class="text-xl font-semibold text-blue-900 mt-1">
                                             {{ $registration->warranty_end_date->format('d M Y') }}
                                         </dd>
@@ -188,16 +188,16 @@
                                         <dt class="text-xs font-medium text-blue-600 uppercase">Status</dt>
                                         <dd class="text-xl font-semibold mt-1">
                                             @if(now()->lessThanOrEqualTo($registration->warranty_end_date))
-                                                <span class="text-green-600">✓ Active</span>
+                                                <span class="text-green-600">✓ Aktif</span>
                                             @else
-                                                <span class="text-gray-600">✗ Expired</span>
+                                                <span class="text-gray-600">✗ Kadaluarsa</span>
                                             @endif
                                         </dd>
                                     </div>
                                 </div>
 
                                 <div class="mt-4 text-sm text-blue-700">
-                                    <p>Approved by: <strong>{{ $registration->approvedByUser->name ?? 'System' }}</strong> on {{ $registration->approved_at->format('d M Y H:i') }}</p>
+                                    <p>Disetujui oleh: <strong>{{ $registration->approvedByUser->name ?? 'System' }}</strong> pada {{ $registration->approved_at->format('d M Y H:i') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -207,14 +207,14 @@
                     @if($registration->status === 'rejected')
                         <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6">
-                                <h4 class="text-lg font-semibold text-red-900 mb-4">Rejection Details</h4>
+                                <h4 class="text-lg font-semibold text-red-900 mb-4">Detail Penolakan</h4>
                                 
                                 <div class="mb-4 p-4 bg-white rounded-lg border border-red-200">
                                     <p class="text-sm text-red-900 whitespace-pre-wrap">{{ $registration->rejection_reason }}</p>
                                 </div>
 
                                 <div class="text-sm text-red-700">
-                                    <p>Rejected by: <strong>{{ $registration->rejectedByUser->name ?? 'System' }}</strong> on {{ $registration->rejected_at->format('d M Y H:i') }}</p>
+                                    <p>Ditolak oleh: <strong>{{ $registration->rejectedByUser->name ?? 'System' }}</strong> pada {{ $registration->rejected_at->format('d M Y H:i') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -233,19 +233,19 @@
 
                     @if($registration->status === 'approved')
                         <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <h4 class="font-semibold text-green-900 mb-2">✅ Warranty Information</h4>
+                            <h4 class="font-semibold text-green-900 mb-2">Informasi Garansi</h4>
                             <div class="grid grid-cols-2 gap-4 text-sm">
                                 <div>
-                                    <p class="text-green-700 font-medium">Warranty Start:</p>
+                                    <p class="text-green-700 font-medium">Tanggal Mulai:</p>
                                     <p class="text-green-900 font-semibold">{{ $registration->warranty_start_date->format('d M Y') }}</p>
                                 </div>
                                 <div>
-                                    <p class="text-green-700 font-medium">Warranty End:</p>
+                                    <p class="text-green-700 font-medium">Tanggal Selesai:</p>
                                     <p class="text-green-900 font-semibold">{{ $registration->warranty_end_date->format('d M Y') }}</p>
                                 </div>
                             </div>
                             <p class="text-xs text-green-600 mt-2">
-                                Verified by: {{ $registration->verifier->name ?? 'System' }} | 
+                                Diverifikasi oleh: {{ $registration->verifier->name ?? 'System' }} | 
                                 {{ ($registration->verified_at ?? $registration->approved_at)?->format('d M Y, H:i') }}
                             </p>
                         </div>
@@ -258,23 +258,23 @@
                         <!-- Approve Form -->
                         <div class="bg-green-50 border-2 border-green-200 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                             <div class="p-6">
-                                <h4 class="text-lg font-semibold text-green-900 mb-4">Approve Registration</h4>
+                                <h4 class="text-lg font-semibold text-green-900 mb-4">Registrasi Disetujui</h4>
                                 
                                 <form action="{{ route('admin.warranty.approve', $registration) }}" method="POST">
                                     @csrf
                                     
                                     <div class="mb-4">
                                         <p class="text-sm text-green-700 mb-3">
-                                            ✓ Warranty period: <strong>{{ $registration->product->warranty_period_months }} months</strong>
+                                            ✓ Periode Garansi: <strong>{{ $registration->product->warranty_period_months }} bulan</strong>
                                         </p>
                                         <p class="text-xs text-green-600">
-                                            Auto-calculated start & end dates will be set upon approval.
+                                            Tanggal mulai & selesai akan dihitung otomatis saat disetujui.
                                         </p>
                                     </div>
 
                                     <button type="submit" 
                                         class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
-                                        ✓ Approve Warranty
+                                        ✓ Setujui Garansi
                                     </button>
                                 </form>
                             </div>
@@ -283,16 +283,16 @@
                         <!-- Reject Form -->
                         <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6">
-                                <h4 class="text-lg font-semibold text-red-900 mb-4">Reject Registration</h4>
+                                <h4 class="text-lg font-semibold text-red-900 mb-4">Registrasi Ditolak</h4>
                                 
                                 <form action="{{ route('admin.warranty.reject', $registration) }}" method="POST" id="rejectForm">
                                     @csrf
                                     
                                     <div class="mb-4">
-                                        <label for="rejection_reason" class="block text-sm font-medium text-red-700 mb-2">Reason for Rejection</label>
+                                        <label for="rejection_reason" class="block text-sm font-medium text-red-700 mb-2">Alasan Penolakan</label>
                                         <textarea name="rejection_reason" id="rejection_reason" rows="4"
                                             class="w-full rounded-md border-red-300 shadow-sm focus:border-red-500 focus:ring-red-500 @error('rejection_reason') border-red-500 @enderror text-sm"
-                                            placeholder="Explain why this registration is rejected..."
+                                            placeholder="Jelaskan mengapa registrasi ini ditolak..."
                                             required>{{ old('rejection_reason') }}</textarea>
                                         @error('rejection_reason')
                                             <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -300,9 +300,9 @@
                                     </div>
 
                                     <button type="button" 
-                                        onclick="if(confirm('Are you sure you want to reject this registration?')) { document.getElementById('rejectForm').submit(); }"
+                                        onclick="if(confirm('Apakah Anda yakin ingin menolak registrasi ini?')) { document.getElementById('rejectForm').submit(); }"
                                         class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
-                                        ✗ Reject Warranty
+                                        ✗ Tolak Garansi
                                     </button>
                                 </form>
                             </div>
@@ -316,19 +316,19 @@
                                 @if($registration->status === 'approved')
                                     <div class="p-3 bg-green-100 border border-green-300 rounded-lg mb-4">
                                         <p class="text-sm text-green-800">
-                                            ✓ This warranty has been <strong>APPROVED</strong>
+                                            ✓ Garansi ini telah <strong>DISETUJUI</strong>
                                         </p>
                                     </div>
                                 @else
                                     <div class="p-3 bg-red-100 border border-red-300 rounded-lg mb-4">
                                         <p class="text-sm text-red-800">
-                                            ✗ This warranty has been <strong>REJECTED</strong>
+                                            ✗ Garansi ini telah <strong>DITOLAK</strong>
                                         </p>
                                     </div>
                                 @endif
 
                                 <p class="text-xs text-gray-600 text-center">
-                                    This registration cannot be modified.
+                                    Registrasi ini tidak dapat diubah.
                                 </p>
                             </div>
                         </div>

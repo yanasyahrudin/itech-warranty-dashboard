@@ -3,7 +3,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Warranty Registration Verification') }}
+                {{ __('Verifikasi Registrasi Garansi') }}
             </h2>
         </div>
     </x-slot>
@@ -17,7 +17,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Total Registrations</p>
+                                <p class="text-sm font-medium text-gray-500">Total Registrasi</p>
                                 <p class="mt-1 text-3xl font-semibold text-gray-900">{{ $stats['total'] }}</p>
                             </div>
                             <div class="flex-shrink-0">
@@ -34,7 +34,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Pending Review</p>
+                                <p class="text-sm font-medium text-gray-500">Menunggu Review</p>
                                 <p class="mt-1 text-3xl font-semibold text-yellow-600">{{ $stats['pending'] }}</p>
                             </div>
                             <div class="flex-shrink-0">
@@ -51,7 +51,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Approved</p>
+                                <p class="text-sm font-medium text-gray-500">Disetujui</p>
                                 <p class="mt-1 text-3xl font-semibold text-green-600">{{ $stats['approved'] }}</p>
                             </div>
                             <div class="flex-shrink-0">
@@ -68,7 +68,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Rejected</p>
+                                <p class="text-sm font-medium text-gray-500">Ditolak</p>
                                 <p class="mt-1 text-3xl font-semibold text-red-600">{{ $stats['rejected'] }}</p>
                             </div>
                             <div class="flex-shrink-0">
@@ -107,7 +107,7 @@
             <!-- Registrations Table -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">All Registrations</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Semua Registrasi</h3>
 
                     @if($registrations->count())
                         <div class="overflow-x-auto">
@@ -115,11 +115,11 @@
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serial Number</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produk</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pelanggan</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registered</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Didaftarkan</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -157,7 +157,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                                 <a href="{{ route('admin.warranty.show', $registration) }}" 
                                                     class="text-indigo-600 hover:text-indigo-900 font-medium">
-                                                    View Details
+                                                    Lihat Detail
                                                 </a>
                                             </td>
                                         </tr>

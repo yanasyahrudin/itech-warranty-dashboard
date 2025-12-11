@@ -3,20 +3,20 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Issue Products') }}
+                {{ __('Produk Dikeluarkan') }}
             </h2>
             <a href="{{ route('admin.warehouse.issued.index') }}" 
                 class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">
-                ← Back to List
+                ← Kembali ke Daftar
             </a>
         </div>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-6">Product Issue Form</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6">Form Produk Dikeluarkan</h3>
 
                     <!-- Info Box -->
                     <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -25,9 +25,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                             </svg>
                             <div>
-                                <p class="text-sm font-semibold text-red-800">Warning:</p>
+                                <p class="text-sm font-semibold text-red-800">Peringatan:</p>
                                 <p class="text-xs text-red-700 mt-1">
-                                    Issuing products will decrease the stock quantity. Make sure to verify the quantity before submission.
+                                    Produk yang dikeluarkan akan mengurangi jumlah stok. Pastikan untuk memverifikasi jumlah sebelum pengiriman.
                                 </p>
                             </div>
                         </div>
@@ -39,12 +39,12 @@
                         <!-- Product Selection -->
                         <div class="mb-6">
                             <label for="product_id" class="block text-sm font-medium text-gray-700 mb-2">
-                                Select Product <span class="text-red-500">*</span>
+                                Pilih Produk <span class="text-red-500">*</span>
                             </label>
                             <select name="product_id" id="product_id" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('product_id') border-red-500 @enderror" 
                                 required onchange="updateProductInfo()">
-                                <option value="">-- Select Product --</option>
+                                <option value="">-- Pilih Produk --</option>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id }}" 
                                         data-part-number="{{ $product->part_number }}"
@@ -87,27 +87,27 @@
                         <!-- Quantity -->
                         <div class="mb-6">
                             <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">
-                                Quantity to Issue <span class="text-red-500">*</span>
+                                Jumlah yang Dikeluarkan <span class="text-red-500">*</span>
                             </label>
                             <input type="number" name="quantity" id="quantity" value="{{ old('quantity') }}" min="1"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('quantity') border-red-500 @enderror" 
-                                placeholder="Enter quantity to issue"
+                                placeholder="Masukkan jumlah yang dikeluarkan"
                                 required
                                 onkeyup="calculateNewStock()">
                             @error('quantity')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-gray-500">Enter the number of units to issue</p>
+                            <p class="mt-1 text-xs text-gray-500">Masukkan jumlah unit yang dikeluarkan</p>
                         </div>
 
                         <!-- Stock Preview -->
                         <div id="stockPreview" class="mb-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200 hidden">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm font-medium text-yellow-900">Stock Update Preview</p>
+                                    <p class="text-sm font-medium text-yellow-900">Pratinjau Pembaruan Stok</p>
                                     <p class="text-xs text-yellow-700 mt-1">
-                                        Current: <strong><span id="preview-current">0</span></strong> units → 
-                                        New: <strong><span id="preview-new">0</span></strong> units
+                                        Saat Ini: <strong><span id="preview-current">0</span></strong> unit → 
+                                        Baru: <strong><span id="preview-new">0</span></strong> unit
                                         (<span class="text-red-600">-<span id="preview-removed">0</span></span>)
                                     </p>
                                 </div>
@@ -120,41 +120,41 @@
                         <!-- Destination -->
                         <div class="mb-6">
                             <label for="destination" class="block text-sm font-medium text-gray-700 mb-2">
-                                Destination / Recipient <span class="text-red-500">*</span>
+                                Tujuan / Penerima <span class="text-red-500">*</span>
                             </label>
                             <input type="text" name="destination" id="destination" value="{{ old('destination') }}"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('destination') border-red-500 @enderror" 
-                                placeholder="e.g., Customer Name, Department, Project"
+                                placeholder="e.g., Nama Pelanggan, Departemen, Proyek"
                                 required>
                             @error('destination')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-gray-500">Where is this product going?</p>
+                            <p class="mt-1 text-xs text-gray-500">Ke mana produk ini akan dikirim?</p>
                         </div>
 
                         <!-- Notes -->
                         <div class="mb-6">
                             <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">
-                                Notes (Optional)
+                                Catatan (Opsional)
                             </label>
                             <textarea name="notes" id="notes" rows="4"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('notes') border-red-500 @enderror"
-                                placeholder="Additional notes about this issue...">{{ old('notes') }}</textarea>
+                                placeholder="Catatan tambahan tentang pengeluaran ini...">{{ old('notes') }}</textarea>
                             @error('notes')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-gray-500">Example: Order number, delivery address, special instructions</p>
+                            <p class="mt-1 text-xs text-gray-500">Contoh: Nomor pesanan, alamat pengiriman, instruksi khusus</p>
                         </div>
 
                         <!-- Submit Buttons -->
                         <div class="flex items-center justify-between pt-4 border-t border-gray-200">
                             <a href="{{ route('admin.warehouse.issued.index') }}" 
                                 class="text-gray-600 hover:text-gray-900 font-medium text-sm">
-                                Cancel
+                                Batal
                             </a>
                             <button type="submit" 
                                 class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
-                                📤 Issue Products
+                                Keluarkan Produk
                             </button>
                         </div>
                     </form>

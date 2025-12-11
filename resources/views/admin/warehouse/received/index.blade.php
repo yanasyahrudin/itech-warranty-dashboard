@@ -3,11 +3,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Warehouse - Product Received') }}
+                {{ __('Warehouse - Produk Diterima') }}
             </h2>
             <a href="{{ route('admin.warehouse.received.create') }}" 
                 class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-lg transition duration-150">
-                + Receive Products
+                + Terima Produk
             </a>
         </div>
     </x-slot>
@@ -21,9 +21,9 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Total Received</p>
+                                <p class="text-sm font-medium text-gray-500">Total Produk Diterima</p>
                                 <p class="mt-1 text-3xl font-semibold text-green-600">{{ number_format($stats['total_received']) }}</p>
-                                <p class="text-xs text-gray-500 mt-1">Units</p>
+                                <p class="text-xs text-gray-500 mt-1">Unit</p>
                             </div>
                             <div class="flex-shrink-0">
                                 <svg class="h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,9 +39,9 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Total Transactions</p>
+                                <p class="text-sm font-medium text-gray-500">Total Transaksi</p>
                                 <p class="mt-1 text-3xl font-semibold text-blue-600">{{ number_format($stats['total_transactions']) }}</p>
-                                <p class="text-xs text-gray-500 mt-1">Receipts</p>
+                                <p class="text-xs text-gray-500 mt-1">Penerimaan</p>
                             </div>
                             <div class="flex-shrink-0">
                                 <svg class="h-12 w-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,9 +57,9 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Today Received</p>
+                                <p class="text-sm font-medium text-gray-500">Diterima Hari Ini</p>
                                 <p class="mt-1 text-3xl font-semibold text-indigo-600">{{ number_format($stats['today_received']) }}</p>
-                                <p class="text-xs text-gray-500 mt-1">Units</p>
+                                <p class="text-xs text-gray-500 mt-1">Unit</p>
                             </div>
                             <div class="flex-shrink-0">
                                 <svg class="h-12 w-12 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,20 +97,20 @@
             <!-- Received Logs Table -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Received History</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Riwayat Penerimaan</h3>
 
                     @if($logs->count())
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date & Time</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal & Waktu</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Part Number</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Name</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Received By</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Notes</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Produk</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Diterima Oleh</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catatan</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -155,10 +155,10 @@
                             <svg class="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                             </svg>
-                            <p class="text-sm text-gray-500">No received products yet</p>
+                            <p class="text-sm text-gray-500">Belum ada produk yang diterima</p>
                             <a href="{{ route('admin.warehouse.received.create') }}" 
                                 class="mt-4 inline-block text-indigo-600 hover:text-indigo-900 font-medium">
-                                Receive your first product →
+                                Terima produk pertama Anda →
                             </a>
                         </div>
                     @endif

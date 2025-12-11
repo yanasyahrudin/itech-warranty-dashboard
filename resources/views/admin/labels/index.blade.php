@@ -60,7 +60,7 @@
                                 <span id="selectedCount">0</span> product(s) selected
                             </div>
                             <button type="submit" id="bulkGenerateBtn" disabled
-                                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
+                                class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
                                 📄 Generate Bulk PDF
                             </button>
                         </div>

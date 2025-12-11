@@ -6,7 +6,7 @@
                 {{ __('Warehouse - Product Issued') }}
             </h2>
             <a href="{{ route('admin.warehouse.issued.create') }}" 
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150">
+                class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-lg transition duration-150">
                 + Issue Products
             </a>
         </div>

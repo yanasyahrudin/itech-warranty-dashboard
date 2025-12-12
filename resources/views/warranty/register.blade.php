@@ -1,30 +1,32 @@
 <!-- filepath: resources/views/warranty/register.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Warranty - iTech</title>
+    <title>Daftar Garansi - Itech Smart Choice</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
-<body class="bg-gradient-to-br from-indigo-50 to-blue-50">
+<body class="bg-gradient-to-r from-gray-400 to-gray-600">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow-sm border-b border-gray-200">
+        <header class="bg-white shadow-sm border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold text-indigo-600">🔧 iTech</div>
-                    <span class="ml-2 text-gray-600">Warranty System</span>
+                    <div class="text-2xl font-bold text-gray-600">
+                        <img src="https://res.cloudinary.com/dcbryptkx/image/upload/v1765004406/itech-warranty-qr/LogoItech_z57jdx.png" alt="" class="h-14 w-auto">
+                    </div>
+                    <span class="hidden lg:block ml-2 text-gray-600">Sistem Garansi</span>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="{{ route('warranty.check') }}" class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">
-                        Check Warranty
+                    <a href="{{ route('warranty.check') }}" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
+                        Cek Garansi
                     </a>
                     <a href="/" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
-                        Home
+                        Beranda
                     </a>
                 </div>
             </div>
@@ -34,9 +36,9 @@
         <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
 
             <!-- Page Title -->
-            <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">Register Your Warranty</h1>
-                <p class="text-lg text-gray-600">Complete the form below to register your product warranty</p>
+            <div class="text-center mb-12 text-white">
+                <h1 class="text-4xl font-bold mb-4">Daftar Garansi Anda</h1>
+                <p class="text-lg">Lengkapi formulir di bawah ini untuk mendaftarkan garansi produk Anda</p>
             </div>
 
             <!-- Success Message -->
@@ -59,18 +61,18 @@
                     <!-- Step 1: Product Selection -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">1</span>
-                            Select Your Product
+                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">1</span>
+                            Pilih Produk Anda
                         </h2>
 
                         <div class="mb-4">
                             <label for="product_id" class="block text-sm font-semibold text-gray-700 mb-2">
-                                Product <span class="text-red-500">*</span>
+                                Produk <span class="text-red-500">*</span>
                             </label>
                             <select name="product_id" id="product_id"
-                                class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
+                                class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
                                 required>
-                                <option value="">-- Select a Product --</option>
+                                <option value="">-- Pilih Produk --</option>
                                 @foreach($products as $product)
                                 <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
                                     {{ $product->name }} ({{ $product->part_number }})
@@ -80,7 +82,7 @@
                             @error('product_id')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-gray-500">Choose the product you want to register for warranty</p>
+                            <p class="mt-1 text-xs text-gray-500">Pilih produk yang ingin Anda daftarkan garansinya</p>
                         </div>
 
                         <!-- Product Info Display -->
@@ -91,38 +93,36 @@
                                     <p class="text-sm text-indigo-900" id="partNumber">-</p>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-indigo-700 font-semibold">Warranty Period</p>
+                                    <p class="text-xs text-indigo-700 font-semibold">Periode Garansi</p>
                                     <p class="text-sm text-indigo-900" id="warrantyPeriod">-</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <hr class="my-8">
-
                     <!-- Step 2: Serial Number & Purchase Info -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">2</span>
-                            Serial Number & Purchase Information
+                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">2</span>
+                            Nomor Seri & Informasi Pembelian
                         </h2>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <!-- Serial Number -->
                             <div>
                                 <label for="serial_number" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Serial Number <span class="text-red-500">*</span>
+                                    Nomor Seri <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" name="serial_number" id="serial_number"
                                     value="{{ old('serial_number') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror uppercase"
+                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror uppercase"
                                     placeholder="e.g., CASE-FULL-TOWER-01-00001"
                                     style="text-transform: uppercase;"
                                     required>
                                 @error('serial_number')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
-                                <p class="mt-1 text-xs text-gray-500">Found on the product label or QR code</p>
+                                <p class="mt-1 text-xs text-gray-500">Ditemukan pada label produk atau kode QR</p>
                             </div>
 
                             <!-- Purchase Date -->
@@ -132,35 +132,33 @@
                                 </label>
                                 <input type="date" name="purchase_date" id="purchase_date"
                                     value="{{ old('purchase_date') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
                                     required>
                                 @error('purchase_date')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
-                                <p class="mt-1 text-xs text-gray-500">When you purchased this product</p>
+                                <p class="mt-1 text-xs text-gray-500">Tanggal Anda membeli produk ini</p>
                             </div>
                         </div>
                     </div>
 
-                    <hr class="my-8">
-
                     <!-- Step 3: Customer Information -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">3</span>
-                            Your Information
+                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">3</span>
+                            Informasi Anda
                         </h2>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <!-- Name -->
                             <div>
                                 <label for="customer_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Full Name <span class="text-red-500">*</span>
+                                    Nama Lengkap/Nama Perusahaan <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" name="customer_name" id="customer_name"
                                     value="{{ old('customer_name') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_name') border-red-500 @enderror"
-                                    placeholder="Your full name"
+                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_name') border-red-500 @enderror"
+                                    placeholder="Nama lengkap Anda/Nama perusahaan"
                                     required>
                                 @error('customer_name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -170,11 +168,11 @@
                             <!-- Phone -->
                             <div>
                                 <label for="customer_phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Phone Number <span class="text-red-500">*</span>
+                                    Nomor Handphone <span class="text-red-500">*</span>
                                 </label>
                                 <input type="tel" name="customer_phone" id="customer_phone"
                                     value="{{ old('customer_phone') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_phone') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_phone') border-red-500 @enderror"
                                     placeholder="+62 XXX-XXXX-XXXX"
                                     required>
                                 @error('customer_phone')
@@ -189,8 +187,8 @@
                                 </label>
                                 <input type="email" name="customer_email" id="customer_email"
                                     value="{{ old('customer_email') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
-                                    placeholder="your.email@example.com">
+                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
+                                    placeholder="email.anda@contoh.com">
                                 @error('customer_email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -199,32 +197,30 @@
                         </div>
                     </div>
 
-                    <hr class="my-8">
-
                     <!-- Step 4: Invoice Upload -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">4</span>
-                            Upload Invoice
+                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">4</span>
+                            Unggah Invoice Pembelian
                         </h2>
 
                         <div class="mb-4">
                             <label for="invoice" class="block text-sm font-semibold text-gray-700 mb-2">
-                                Invoice Document <span class="text-red-500">*</span>
+                                Dokumen Invoice <span class="text-red-500">*</span>
                             </label>
 
                             <!-- File Upload Area -->
-                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition"
+                            <div class="border-2 border-dashed  rounded-lg p-6 text-center hover:border-indigo-500 transition"
                                 id="uploadArea">
                                 <svg class="mx-auto h-12 w-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                 </svg>
-                                <p class="text-sm text-gray-600 mb-2">Drag and drop your invoice here, or click to select</p>
+                                <p class="text-sm text-gray-600 mb-2">Seret dan lepas invoice Anda di sini, atau klik untuk memilih</p>
                                 <input type="file" name="invoice" id="invoice"
                                     class="hidden"
                                     accept=".pdf,.jpg,.jpeg,.png"
                                     required>
-                                <p class="text-xs text-gray-500">Supported formats: PDF, JPG, PNG (Max 5MB)</p>
+                                <p class="text-xs text-gray-500">Format yang didukung: PDF, JPG, PNG (Maks 5MB)</p>
                             </div>
 
                             @error('invoice')
@@ -250,34 +246,32 @@
                         </div>
 
                         <!-- Invoice Info -->
-                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                            <h4 class="font-semibold text-blue-900 mb-2">📄 Invoice Requirements:</h4>
-                            <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
-                                <li>Invoice must show the product purchase details</li>
-                                <li>Date and purchase amount should be visible</li>
-                                <li>Receipt/proof of purchase is acceptable</li>
-                                <li>Image must be clear and readable</li>
+                        <div class="p-4 bg-gradient-to-r from-gray-100 to-gray-300 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-2">Persyaratan Invoice:</h4>
+                            <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
+                                <li>Invoice harus menunjukkan detail pembelian produk</li>
+                                <li>Tanggal dan jumlah pembelian harus terlihat</li>
+                                <li>Struk/bukti pembelian dapat diterima</li>
+                                <li>Gambar harus jelas dan dapat dibaca</li>
                             </ul>
                         </div>
                     </div>
 
-                    <hr class="my-8">
-
                     <!-- Step 5: Additional Information -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">5</span>
-                            Additional Information (Optional)
+                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">5</span>
+                            Informasi Tambahan (Opsional)
                         </h2>
 
                         <div>
                             <label for="additional_info" class="block text-sm font-semibold text-gray-700 mb-2">
-                                Comments or Notes
+                                Komentar atau Catatan
                             </label>
                             <textarea name="additional_info" id="additional_info" rows="4"
-                                class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-                                placeholder="Any additional information about your product or warranty...">{{ old('additional_info') }}</textarea>
-                            <p class="mt-1 text-xs text-gray-500">Optional: Add any additional details</p>
+                                class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                                placeholder="Informasi tambahan tentang produk atau garansi Anda...">{{ old('additional_info') }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">Opsional: Tambahkan detail tambahan apa pun</p>
                         </div>
                     </div>
 
@@ -294,55 +288,54 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+                    <div class="flex items-center justify-between pt-6 ">
                         <a href="/" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
-                            Back to Home
+                            Kembali ke Beranda
                         </a>
                         <button type="submit"
-                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150">
-                            📝 Submit Registration
+                            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150">
+                            Kirim Pendaftaran
                         </button>
                     </div>
                 </form>
             </div>
 
             <!-- Info Section -->
-            <div class="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <h3 class="font-semibold text-yellow-900 mb-2">⏳ What Happens Next?</h3>
-                <p class="text-sm text-yellow-800 mb-3">
-                    After you submit your warranty registration, our team will verify your information within 1-2 business days. You will receive an email confirmation once your warranty is approved.
+            <div class="mt-8 p-6 bg-gradient-to-r from-gray-100 to-gray-300 rounded-lg">
+                <h3 class="font-semibold text-gray-900 mb-2">Apa yang Terjadi Selanjutnya?</h3>
+                <p class="text-sm text-gray-800 mb-3">
+                    Setelah Anda mengirimkan pendaftaran garansi, tim kami akan memverifikasi informasi Anda dalam 1-3 hari kerja.
                 </p>
-                <ul class="text-sm text-yellow-800 space-y-1 list-disc list-inside">
-                    <li>We'll verify your invoice and serial number</li>
-                    <li>You'll get an email confirmation once approved</li>
-                    <li>Your warranty status can be checked anytime</li>
+                <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
+                    <li>Kami akan memverifikasi invoice dan serial number Anda</li>
+                    <li>Status garansi Anda dapat diperiksa kapan saja, cek secara berkala <a href="{{ route('warranty.check') }}" class="font-bold">di sini</a></li>
                 </ul>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-white border-t border-gray-200 mt-12">
+        <footer class="bg-gradient-to-r from-gray-100 to-gray-300 mt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">About iTech</h3>
-                        <p class="text-sm text-gray-600">Professional warranty management system for quality products</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Tentang Itech Smart Choice</h3>
+                        <p class="text-sm text-gray-600">Sistem manajemen garansi profesional untuk produk berkualitas</p>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Quick Links</h3>
+                        <h3 class="font-semibold text-gray-900 mb-2">Tautan Cepat</h3>
                         <ul class="text-sm text-gray-600 space-y-1">
-                            <li><a href="{{ route('warranty.register') }}" class="hover:text-indigo-600">Register Warranty</a></li>
-                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Check Warranty</a></li>
+                            <li><a href="{{ route('warranty.register') }}" class="hover:text-indigo-600">Daftar Garansi</a></li>
+                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Periksa Garansi</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Support</h3>
-                        <p class="text-sm text-gray-600">Email: support@itech.com</p>
-                        <p class="text-sm text-gray-600">Phone: +62 XXX-XXXX-XXXX</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Dukungan</h3>
+                        <p class="text-sm text-gray-600">Email: xxx@xxx.com</p>
+                        <p class="text-sm text-gray-600">Telepon: +62 811-7531-881</p>
                     </div>
                 </div>
-                <div class="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-600">
-                    <p>&copy; {{ date('Y') }} iTech. All rights reserved.</p>
+                <div class="border-gray-200 mt-8 pt-4 text-center text-sm text-gray-600">
+                    <p>&copy; {{ date('Y') }} PT. Itech Persada Nusantara. Semua Hak Dilindungi Undang-Undang.</p>
                 </div>
             </div>
         </footer>

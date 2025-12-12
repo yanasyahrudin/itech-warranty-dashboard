@@ -46,6 +46,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::get('/received', [WarehouseController::class, 'receivedIndex'])->name('received.index');
         Route::get('/received/create', [WarehouseController::class, 'receivedCreate'])->name('received.create');
         Route::post('/received', [WarehouseController::class, 'receivedStore'])->name('received.store');
+        Route::get('/received/{transaction}/print', [WarehouseController::class, 'receivedPrint'])->name('received.print');
+        Route::get('/received/{transaction}/download', [WarehouseController::class, 'receivedDownload'])->name('received.download');
         
         // Product Issued
         Route::get('/issued', [WarehouseController::class, 'issuedIndex'])->name('issued.index');
@@ -71,9 +73,18 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Product Label Generator
     Route::prefix('labels')->name('labels.')->group(function () {
         Route::get('/', [ProductLabelController::class, 'index'])->name('index');
+        
+        // Old routes (product-based)
         Route::get('/generate/{product}', [ProductLabelController::class, 'generate'])->name('generate');
-        Route::post('/bulk-generate', [ProductLabelController::class, 'bulkGenerate'])->name('bulk-generate');
         Route::get('/download/{product}', [ProductLabelController::class, 'download'])->name('download');
+        
+        // New routes (serial number-based)
+        Route::get('/serial/{serialNumber}', [ProductLabelController::class, 'generateWithSerial'])->name('serial.generate');
+        Route::get('/serial/{serialNumber}/download', [ProductLabelController::class, 'downloadWithSerial'])->name('serial.download');
+        
+        // Bulk operations
+        Route::post('/bulk-generate', [ProductLabelController::class, 'bulkGenerate'])->name('bulk-generate');
+        Route::post('/bulk-generate-serials', [ProductLabelController::class, 'bulkGenerateWithSerials'])->name('bulk-generate-serials');
     });
 });
 

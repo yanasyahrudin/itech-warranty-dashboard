@@ -4,109 +4,184 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductSerialNumber;
 use Illuminate\Http\Request;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Barryvdh\DomPDF\Facade\Pdf;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProductLabelController extends Controller
 {
     /**
-     * Display product label generator page
+     * Display product labels page with serial number selection
      */
     public function index()
     {
-        $products = Product::orderBy('part_number')->paginate(15);
-        
-        return view('admin.labels.index', compact('products'));
+        // Paginate products (e.g., 12 per page)
+        $products = \App\Models\Product::orderBy('part_number')
+            ->paginate(12);
+
+        // Preload available serials for products shown on this page
+        $productIds = collect($products->items())->pluck('id');
+        $availableSerials = \App\Models\ProductSerialNumber::whereIn('product_id', $productIds)
+            ->where('status', 'available')
+            ->get()
+            ->groupBy('product_id');
+
+        return view('admin.labels.index', compact('products', 'availableSerials'));
     }
 
     /**
-     * Generate single product label preview
+     * Generate label for specific serial number
      */
-    public function generate(Product $product)
+    public function generateWithSerial(ProductSerialNumber $serialNumber)
     {
-        // Universal QR Code URL
-        $qrCodeUrl = route('warranty.register');
+        $serialNumber->load('product');
+        $product = $serialNumber->product;
+        $registrationUrl = route('warranty.register');
         
-        // Generate QR Code as SVG (no extension needed)
-        $qrCode = QrCode::size(200)
-            ->margin(1)
-            ->errorCorrection('H')
-            ->generate($qrCodeUrl);
-
-        return view('admin.labels.generate', compact('product', 'qrCode', 'qrCodeUrl'));
+        // Generate QR Code
+        $qrCode = QrCode::size(150)
+            ->format('png')
+            ->generate($registrationUrl);
+        
+        $qrCodeBase64 = base64_encode($qrCode);
+        
+        return view('admin.labels.preview-serial', compact('product', 'serialNumber', 'qrCodeBase64', 'registrationUrl'));
     }
 
     /**
-     * Download single product label as PDF
+     * Download label PDF for specific serial number
      */
-    public function download(Product $product)
+    public function downloadWithSerial(ProductSerialNumber $serialNumber)
     {
-        // Universal QR Code URL
-        $qrCodeUrl = route('warranty.register');
+        $serialNumber->load('product');
+        $product = $serialNumber->product;
+        $registrationUrl = route('warranty.register');
         
-        // Generate QR Code as SVG
-        $qrCode = QrCode::size(300)
-            ->margin(1)
-            ->errorCorrection('H')
-            ->generate($qrCodeUrl);
+        // Generate QR Code
+        $qrCode = QrCode::size(150)
+            ->format('png')
+            ->generate($registrationUrl);
+        
+        $qrCodeBase64 = base64_encode($qrCode);
+        
+        $pdf = Pdf::loadView('admin.labels.pdf-serial', compact('product', 'serialNumber', 'qrCodeBase64', 'registrationUrl'));
+        
+        $filename = 'label-' . $serialNumber->serial_number . '.pdf';
+        
+        return $pdf->download($filename);
+    }
 
-        $data = [
+    /**
+     * Bulk generate labels with serial numbers
+     */
+    public function bulkGenerateWithSerials(Request $request)
+    {
+        $request->validate([
+            'serial_numbers' => 'required|array|min:1',
+            'serial_numbers.*' => 'exists:product_serial_numbers,id',
+        ]);
+
+        $serialNumbers = ProductSerialNumber::with('product')
+            ->whereIn('id', $request->serial_numbers)
+            ->get();
+
+        $registrationUrl = route('warranty.register');
+        $labels = [];
+
+        foreach ($serialNumbers as $serialNumber) {
+            $qrCode = QrCode::size(150)
+                ->format('png')
+                ->generate($registrationUrl);
+            
+            $labels[] = [
+                'serial' => $serialNumber,
+                'product' => $serialNumber->product,
+                'qr_code' => base64_encode($qrCode),
+            ];
+        }
+
+        $pdf = Pdf::loadView('admin.labels.bulk-pdf', compact('labels', 'registrationUrl'));
+        
+        $filename = 'labels-bulk-' . now()->format('Y-m-d-His') . '.pdf';
+        
+        return $pdf->download($filename);
+    }
+
+    /**
+     * Generate label preview for a product (without specific serial)
+     */
+    public function generate(\App\Models\Product $product)
+    {
+        $registrationUrl = route('warranty.register');
+
+        // Use SVG to avoid Imagick dependency
+        $qrSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(150)
+            ->format('svg')
+            ->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
+
+        $serials = $product->availableSerialNumbers()->limit(20)->get();
+
+        return view('admin.labels.preview', [
             'product' => $product,
-            'qrCode' => $qrCode,
-            'qrCodeUrl' => $qrCodeUrl,
-        ];
-
-        $pdf = Pdf::loadView('admin.labels.pdf', $data)
-            ->setPaper([0, 0, 283.46, 141.73], 'landscape'); // 10cm x 5cm in points
-
-        return $pdf->download('label-' . $product->part_number . '.pdf');
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+            'serials' => $serials,
+        ]);
     }
 
     /**
-     * Bulk generate labels for multiple products
+     * Download product label PDF (without specific serial)
+     */
+    public function download(\App\Models\Product $product)
+    {
+        $registrationUrl = route('warranty.register');
+
+        // Use SVG for PDF embedding
+        $qrSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(150)
+            ->format('svg')
+            ->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.labels.pdf', [
+            'product' => $product,
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+        ]);
+
+        $filename = 'label-' . ($product->part_number ?? ('product-' . $product->id)) . '.pdf';
+        return $pdf->download($filename);
+    }
+
+    /**
+     * Bulk generate labels for selected products (no specific serials)
+     * Expects: product_ids[] (array)
      */
     public function bulkGenerate(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'product_ids' => 'required|array|min:1',
-            'product_ids.*' => 'exists:products,id',
-            'quantity' => 'required|integer|min:1|max:100',
+            'product_ids.*' => 'integer|exists:products,id',
         ]);
 
-        $products = Product::whereIn('id', $request->product_ids)->get();
-        
-        // Universal QR Code URL
-        $qrCodeUrl = route('warranty.register');
-        
-        // Generate QR Code as SVG
-        $qrCode = QrCode::size(300)
-            ->margin(1)
-            ->errorCorrection('H')
-            ->generate($qrCodeUrl);
+        $products = Product::whereIn('id', $data['product_ids'])
+            ->orderBy('part_number')
+            ->get();
 
-        $labels = [];
-        foreach ($products as $product) {
-            // Generate multiple labels based on quantity
-            for ($i = 1; $i <= $request->quantity; $i++) {
-                $labels[] = [
-                    'product' => $product,
-                    'serial_number' => $product->part_number . '-' . str_pad($i, 5, '0', STR_PAD_LEFT),
-                    // str_pad($i, 5, '0', STR_PAD_LEFT) = 00001, 00002, dst
-                    'label_number' => $i,
-                ];
-            }
-        }
+        $registrationUrl = route('warranty.register');
 
-        $data = [
-            'labels' => $labels,
-            'qrCode' => $qrCode,
-            'qrCodeUrl' => $qrCodeUrl,
-        ];
+        // Pre-generate one SVG QR (same universal code) and reuse
+        $qrSvg = QrCode::size(150)->format('svg')->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
 
-        $pdf = Pdf::loadView('admin.labels.bulk-pdf', $data)
-            ->setPaper([0, 0, 283.46, 141.73], 'landscape'); // 10cm x 5cm
+        $pdf = Pdf::loadView('admin.labels.bulk-pdf', [
+            'products' => $products,
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+        ]);
 
-        return $pdf->download('labels-bulk-' . now()->format('YmdHis') . '.pdf');
+        $filename = 'labels-bulk-' . now()->format('Ymd-His') . '.pdf';
+        return $pdf->download($filename);
     }
 }

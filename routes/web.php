@@ -86,6 +86,14 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::post('/bulk-generate', [ProductLabelController::class, 'bulkGenerate'])->name('bulk-generate');
         Route::post('/bulk-generate-serials', [ProductLabelController::class, 'bulkGenerateWithSerials'])->name('bulk-generate-serials');
     });
+    
+    // Admin routes (labels)
+    Route::get('labels', [ProductLabelController::class, 'index'])->name('labels.index');
+    // Serial-based label generation
+    Route::get('labels/serial/{serial}/generate', [ProductLabelController::class, 'serialGenerate'])->name('labels.serial.generate');
+    Route::get('labels/serial/{serial}/download', [ProductLabelController::class, 'serialDownload'])->name('labels.serial.download');
+    // Bulk by serials
+    Route::post('labels/bulk-serials', [ProductLabelController::class, 'bulkGenerateBySerials'])->name('labels.bulk-serials');
 });
 
 require __DIR__.'/auth.php';

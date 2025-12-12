@@ -16,14 +16,18 @@ class ProductLabelController extends Controller
      */
     public function index()
     {
-        // Paginate products (e.g., 12 per page)
-        $products = \App\Models\Product::orderBy('part_number')
+        // Hanya produk yang sudah punya serial "available"
+        $products = Product::whereHas('serialNumbers', function ($q) {
+                $q->where('status', 'available');
+            })
+            ->orderBy('part_number')
             ->paginate(12);
 
-        // Preload available serials for products shown on this page
+        // Ambil serial available untuk produk yang tampil di halaman ini
         $productIds = collect($products->items())->pluck('id');
-        $availableSerials = \App\Models\ProductSerialNumber::whereIn('product_id', $productIds)
+        $availableSerials = ProductSerialNumber::whereIn('product_id', $productIds)
             ->where('status', 'available')
+            ->orderBy('serial_number')
             ->get()
             ->groupBy('product_id');
 
@@ -182,6 +186,79 @@ class ProductLabelController extends Controller
         ]);
 
         $filename = 'labels-bulk-' . now()->format('Ymd-His') . '.pdf';
+        return $pdf->download($filename);
+    }
+
+    /**
+     * Preview label untuk Serial Number tertentu
+     */
+    public function serialGenerate(ProductSerialNumber $serial)
+    {
+        $product = $serial->product;
+        $registrationUrl = route('warranty.register');
+
+        // QR SVG (hindari imagick)
+        $qrSvg = QrCode::size(150)->format('svg')->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
+
+        return view('admin.labels.preview-serial', [
+            'product' => $product,
+            'serial' => $serial,
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+        ]);
+    }
+
+    /**
+     * Download PDF label untuk Serial Number tertentu
+     */
+    public function serialDownload(ProductSerialNumber $serial)
+    {
+        $product = $serial->product;
+        $registrationUrl = route('warranty.register');
+
+        $qrSvg = QrCode::size(140)->format('svg')->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
+
+        $pdf = Pdf::loadView('admin.labels.pdf', [
+            'product' => $product,
+            'serialNumber' => $serial->serial_number,
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+        ]);
+
+        $filename = 'label-' . ($product->part_number ?? 'product') . '-' . $serial->serial_number . '.pdf';
+        return $pdf->download($filename);
+    }
+
+    /**
+     * Bulk generate PDF labels berdasarkan daftar Serial IDs
+     * Expects: serial_ids[] (array of ProductSerialNumber IDs)
+     */
+    public function bulkGenerateBySerials(Request $request)
+    {
+        $data = $request->validate([
+            'serial_ids' => 'required|array|min:1',
+            'serial_ids.*' => 'integer|exists:product_serial_numbers,id',
+        ]);
+
+        $serials = ProductSerialNumber::with('product')
+            ->whereIn('id', $data['serial_ids'])
+            ->orderBy('product_id')
+            ->orderBy('serial_number')
+            ->get();
+
+        $registrationUrl = route('warranty.register');
+        $qrSvg = QrCode::size(120)->format('svg')->generate($registrationUrl);
+        $qrCodeSvgBase64 = base64_encode($qrSvg);
+
+        $pdf = Pdf::loadView('admin.labels.bulk-serials-pdf', [
+            'serials' => $serials,
+            'qrCodeSvgBase64' => $qrCodeSvgBase64,
+            'registrationUrl' => $registrationUrl,
+        ]);
+
+        $filename = 'labels-serials-' . now()->format('Ymd-His') . '.pdf';
         return $pdf->download($filename);
     }
 }

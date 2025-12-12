@@ -29,7 +29,7 @@ Setelah disubmit:
 - Admin dapat download Universal QR Code untuk ditempel di semua unit produk.
 
 ### **Generate Product Label**
-Admin dapat mengunduh label produk yang berisi:
+Admin dapat generate dan mengunduh label setelah produk diterima warehouse yang berisi:
 - QR Code Universal
 - Nama Produk
 - Tipe Produk

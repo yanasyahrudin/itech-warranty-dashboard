@@ -28,7 +28,7 @@ class WarrantyRegistrationController extends Controller
             'product_id' => 'required|exists:products,id',
             'serial_number' => 'required|string|unique:warranty_registrations,serial_number',
             'customer_name' => 'required|string|max:255',
-            'customer_email' => 'required|email|max:255',
+            'customer_email' => 'nullable|email|max:255',
             'customer_phone' => 'required|string|max:20',
             'purchase_date' => 'required|date|before_or_equal:today',
             'invoice' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120', // 5MB max
@@ -39,7 +39,6 @@ class WarrantyRegistrationController extends Controller
             'serial_number.required' => 'Serial number is required',
             'serial_number.unique' => 'This serial number has already been registered',
             'customer_name.required' => 'Please enter your name',
-            'customer_email.required' => 'Please enter your email',
             'customer_email.email' => 'Please enter a valid email address',
             'customer_phone.required' => 'Please enter your phone number',
             'purchase_date.required' => 'Please enter the purchase date',
@@ -67,6 +66,6 @@ class WarrantyRegistrationController extends Controller
         ]);
 
         return redirect()->route('warranty.register')
-            ->with('success', 'Warranty registration submitted successfully! Please check your email for confirmation.');
+            ->with('success', 'Warranty registration submitted successfully!');
     }
 }

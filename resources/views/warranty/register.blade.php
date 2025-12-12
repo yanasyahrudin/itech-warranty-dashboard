@@ -1,12 +1,14 @@
 <!-- filepath: resources/views/warranty/register.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Warranty - iTech</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gradient-to-br from-indigo-50 to-blue-50">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
@@ -29,7 +31,7 @@
 
         <!-- Main Content -->
         <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-            
+
             <!-- Page Title -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-gray-900 mb-4">Register Your Warranty</h1>
@@ -38,14 +40,14 @@
 
             <!-- Success Message -->
             @if(session('success'))
-                <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <div class="flex">
-                        <svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <p class="text-sm text-green-800">{{ session('success') }}</p>
-                    </div>
+            <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex">
+                    <svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="text-sm text-green-800">{{ session('success') }}</p>
                 </div>
+            </div>
             @endif
 
             <!-- Registration Form -->
@@ -64,18 +66,18 @@
                             <label for="product_id" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Product <span class="text-red-500">*</span>
                             </label>
-                            <select name="product_id" id="product_id" 
+                            <select name="product_id" id="product_id"
                                 class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
                                 required>
                                 <option value="">-- Select a Product --</option>
                                 @foreach($products as $product)
-                                    <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
-                                        {{ $product->name }} ({{ $product->part_number }})
-                                    </option>
+                                <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
+                                    {{ $product->name }} ({{ $product->part_number }})
+                                </option>
                                 @endforeach
                             </select>
                             @error('product_id')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                             <p class="mt-1 text-xs text-gray-500">Choose the product you want to register for warranty</p>
                         </div>
@@ -117,7 +119,7 @@
                                     style="text-transform: uppercase;"
                                     required>
                                 @error('serial_number')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="mt-1 text-xs text-gray-500">Found on the product label or QR code</p>
                             </div>
@@ -132,7 +134,7 @@
                                     class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
                                     required>
                                 @error('purchase_date')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="mt-1 text-xs text-gray-500">When you purchased this product</p>
                             </div>
@@ -160,27 +162,12 @@
                                     placeholder="Your full name"
                                     required>
                                 @error('customer_name')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <!-- Email -->
-                            <div>
-                                <label for="customer_email" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Email Address <span class="text-red-500">*</span>
-                                </label>
-                                <input type="email" name="customer_email" id="customer_email"
-                                    value="{{ old('customer_email') }}"
-                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
-                                    placeholder="your.email@example.com"
-                                    required>
-                                @error('customer_email')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <!-- Phone -->
-                            <div class="md:col-span-2">
+                            <div>
                                 <label for="customer_phone" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Phone Number <span class="text-red-500">*</span>
                                 </label>
@@ -190,9 +177,25 @@
                                     placeholder="+62 XXX-XXXX-XXXX"
                                     required>
                                 @error('customer_phone')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                            <!-- Email -->
+                            <div class="md:col-span-2">
+                                <label for="customer_email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address <span class="text-red-500"></span>
+                                </label>
+                                <input type="email" name="customer_email" id="customer_email"
+                                    value="{{ old('customer_email') }}"
+                                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
+                                    placeholder="your.email@example.com"
+                                    >
+                                @error('customer_email')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
                         </div>
                     </div>
 
@@ -209,12 +212,12 @@
                             <label for="invoice" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Invoice Document <span class="text-red-500">*</span>
                             </label>
-                            
+
                             <!-- File Upload Area -->
                             <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition"
                                 id="uploadArea">
                                 <svg class="mx-auto h-12 w-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                 </svg>
                                 <p class="text-sm text-gray-600 mb-2">Drag and drop your invoice here, or click to select</p>
                                 <input type="file" name="invoice" id="invoice"
@@ -225,7 +228,7 @@
                             </div>
 
                             @error('invoice')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
 
                             <!-- File Preview -->
@@ -233,7 +236,7 @@
                                 <p class="text-sm font-semibold text-gray-700 mb-2">Selected File:</p>
                                 <div class="flex items-center p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
                                     <svg class="h-6 w-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                     <div class="flex-1">
                                         <p class="text-sm font-semibold text-gray-900" id="fileName">-</p>
@@ -283,7 +286,7 @@
                         <a href="/" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
                             Back to Home
                         </a>
-                        <button type="submit" 
+                        <button type="submit"
                             class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150">
                             📝 Submit Registration
                         </button>
@@ -389,4 +392,5 @@
         });
     </script>
 </body>
+
 </html>

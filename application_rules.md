@@ -79,10 +79,11 @@ Fitur untuk user/teknisi:
      - **Part Number** (otomatis terisi dari pilihan produk, readonly)
      - **Nama Produk** (otomatis terisi dari pilihan produk, readonly)
      - **Serial Number Produk** (diisi manual oleh user - WAJIB & UNIQUE)
-     - Nama Lengkap
-     - Alamat Email
+     - Nama Lengkap / Nama Perusahaan
      - Nomor Telepon
+     - Alamat Email (opsional)
      - Informasi Tambahan (opsional)
+    - User mengisi captcha
 
 4. **UPLOAD INVOICE**
    - Pengguna wajib meng-upload invoice dalam format PDF, foto, atau PNG.
@@ -96,7 +97,6 @@ Fitur untuk user/teknisi:
 
 6. **STATUS KONFIRMASI**
    - **6a. TERKONFIRMASI (APPROVED)**
-     - Sistem mengirim notifikasi via email/SMS
      - Pengguna dapat mengakses kartu garansi digital
      - **Garansi aktif berdasarkan Serial Number**
      - Garansi mulai dari tanggal approval

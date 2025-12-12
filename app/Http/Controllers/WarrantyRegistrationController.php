@@ -6,6 +6,7 @@ use App\Models\WarrantyRegistration;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class WarrantyRegistrationController extends Controller
 {
@@ -15,7 +16,7 @@ class WarrantyRegistrationController extends Controller
     public function create()
     {
         $products = Product::orderBy('part_number')->get();
-        
+
         return view('warranty.register', compact('products'));
     }
 
@@ -33,6 +34,7 @@ class WarrantyRegistrationController extends Controller
             'purchase_date' => 'required|date|before_or_equal:today',
             'invoice' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120', // 5MB max
             'additional_info' => 'nullable|string|max:1000',
+            'g-recaptcha-response' => 'required',
         ], [
             'product_id.required' => 'Please select a product',
             'product_id.exists' => 'Selected product is invalid',
@@ -47,7 +49,21 @@ class WarrantyRegistrationController extends Controller
             'invoice.file' => 'Invoice must be a file',
             'invoice.mimes' => 'Invoice must be a PDF or image (JPG, PNG)',
             'invoice.max' => 'Invoice file cannot be larger than 5MB',
+            'g-recaptcha-response.required' => 'Please complete the reCAPTCHA verification',
         ]);
+
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!($response->json()['success'] ?? false)) {
+            return back()->withErrors([
+                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal. Coba lagi.'
+            ])->withInput();
+        }
 
         // Store invoice file
         $invoicePath = $request->file('invoice')->store('invoices', 'public');
@@ -66,6 +82,6 @@ class WarrantyRegistrationController extends Controller
         ]);
 
         return redirect()->route('warranty.register')
-            ->with('success', 'Warranty registration submitted successfully!');
+            ->with('success', 'Pendaftaran garansi berhasil diajukan! Kami akan memprosesnya dalam waktu 3 hari kerja.');
     }
 }

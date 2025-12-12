@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Warranty - iTech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="bg-gradient-to-br from-indigo-50 to-blue-50">
@@ -189,8 +190,7 @@
                                 <input type="email" name="customer_email" id="customer_email"
                                     value="{{ old('customer_email') }}"
                                     class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
-                                    placeholder="your.email@example.com"
-                                    >
+                                    placeholder="your.email@example.com">
                                 @error('customer_email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -279,6 +279,18 @@
                                 placeholder="Any additional information about your product or warranty...">{{ old('additional_info') }}</textarea>
                             <p class="mt-1 text-xs text-gray-500">Optional: Add any additional details</p>
                         </div>
+                    </div>
+
+                    <div class="mt-4 w-full">
+                        <div class="flex justify-center">
+                            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                        </div>
+
+                        @error('g-recaptcha-response')
+                        <div class="mt-2 text-sm text-red-600 dark:text-red-400 text-center">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <!-- Submit Button -->

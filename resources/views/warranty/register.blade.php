@@ -43,7 +43,7 @@
 
             <!-- Success Message -->
             @if(session('success'))
-            <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
                 <div class="flex">
                     <svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -54,7 +54,7 @@
             @endif
 
             <!-- Registration Form -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="bg-white rounded-xl shadow-lg p-8">
                 <form method="POST" action="{{ route('warranty.store') }}" enctype="multipart/form-data">
                     @csrf
 
@@ -70,7 +70,7 @@
                                 Produk <span class="text-red-500">*</span>
                             </label>
                             <select name="product_id" id="product_id"
-                                class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
+                                class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
                                 required>
                                 <option value="">-- Pilih Produk --</option>
                                 @foreach($products as $product)
@@ -86,7 +86,7 @@
                         </div>
 
                         <!-- Product Info Display -->
-                        <div id="productInfo" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg hidden">
+                        <div id="productInfo" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-xl hidden">
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <p class="text-xs text-indigo-700 font-semibold">Part Number</p>
@@ -115,7 +115,7 @@
                                 </label>
                                 <input type="text" name="serial_number" id="serial_number"
                                     value="{{ old('serial_number') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror uppercase"
+                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror uppercase"
                                     placeholder="e.g., CASE-FULL-TOWER-01-00001"
                                     style="text-transform: uppercase;"
                                     required>
@@ -132,7 +132,7 @@
                                 </label>
                                 <input type="date" name="purchase_date" id="purchase_date"
                                     value="{{ old('purchase_date') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
                                     required>
                                 @error('purchase_date')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -157,7 +157,7 @@
                                 </label>
                                 <input type="text" name="customer_name" id="customer_name"
                                     value="{{ old('customer_name') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_name') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_name') border-red-500 @enderror"
                                     placeholder="Nama lengkap Anda/Nama perusahaan"
                                     required>
                                 @error('customer_name')
@@ -172,7 +172,7 @@
                                 </label>
                                 <input type="tel" name="customer_phone" id="customer_phone"
                                     value="{{ old('customer_phone') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_phone') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_phone') border-red-500 @enderror"
                                     placeholder="+62 XXX-XXXX-XXXX"
                                     required>
                                 @error('customer_phone')
@@ -187,7 +187,7 @@
                                 </label>
                                 <input type="email" name="customer_email" id="customer_email"
                                     value="{{ old('customer_email') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
+                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
                                     placeholder="email.anda@contoh.com">
                                 @error('customer_email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -210,7 +210,7 @@
                             </label>
 
                             <!-- File Upload Area -->
-                            <div class="border-2 border-dashed  rounded-lg p-6 text-center hover:border-indigo-500 transition"
+                            <div class="border-2 border-dashed  rounded-xl p-6 text-center hover:border-indigo-500 transition"
                                 id="uploadArea">
                                 <svg class="mx-auto h-12 w-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -230,7 +230,7 @@
                             <!-- File Preview -->
                             <div id="filePreview" class="mt-4 hidden">
                                 <p class="text-sm font-semibold text-gray-700 mb-2">Selected File:</p>
-                                <div class="flex items-center p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
+                                <div class="flex items-center p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
                                     <svg class="h-6 w-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
@@ -246,7 +246,7 @@
                         </div>
 
                         <!-- Invoice Info -->
-                        <div class="p-4 bg-gradient-to-r from-gray-100 to-gray-300 rounded-lg">
+                        <div class="p-4 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl">
                             <h4 class="font-semibold text-gray-900 mb-2">Persyaratan Invoice:</h4>
                             <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
                                 <li>Invoice harus menunjukkan detail pembelian produk</li>
@@ -269,7 +269,7 @@
                                 Komentar atau Catatan
                             </label>
                             <textarea name="additional_info" id="additional_info" rows="4"
-                                class="w-full px-4 py-2 border-2  rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                                class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
                                 placeholder="Informasi tambahan tentang produk atau garansi Anda...">{{ old('additional_info') }}</textarea>
                             <p class="mt-1 text-xs text-gray-500">Opsional: Tambahkan detail tambahan apa pun</p>
                         </div>
@@ -293,7 +293,7 @@
                             Kembali ke Beranda
                         </a>
                         <button type="submit"
-                            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150">
+                            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition duration-150">
                             Kirim Pendaftaran
                         </button>
                     </div>
@@ -301,7 +301,7 @@
             </div>
 
             <!-- Info Section -->
-            <div class="mt-8 p-6 bg-gradient-to-r from-gray-100 to-gray-300 rounded-lg">
+            <div class="mt-8 p-6 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl">
                 <h3 class="font-semibold text-gray-900 mb-2">Apa yang Terjadi Selanjutnya?</h3>
                 <p class="text-sm text-gray-800 mb-3">
                     Setelah Anda mengirimkan pendaftaran garansi, tim kami akan memverifikasi informasi Anda dalam 1-3 hari kerja.
@@ -318,7 +318,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Tentang Itech Smart Choice</h3>
+                        <h3 class="font-semibold text-gray-900 mb-2">Tentang Itech Warranty Dashboard</h3>
                         <p class="text-sm text-gray-600">Sistem manajemen garansi profesional untuk produk berkualitas</p>
                     </div>
                     <div>

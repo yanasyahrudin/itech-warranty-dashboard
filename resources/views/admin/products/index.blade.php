@@ -7,7 +7,7 @@
                     {{ __('Manajemen Produk') }}
                 </h2>
                 <a href="{{ route('admin.products.create') }}"
-                    class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-xl transition duration-150">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-xl transition duration-150">
                     Tambah Produk Baru
                 </a>
             </div>

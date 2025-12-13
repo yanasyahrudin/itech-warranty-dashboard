@@ -60,10 +60,10 @@
                         </div>
 
                         <div class="flex items-center justify-end gap-4">
-                            <a href="{{ route('admin.products.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{ route('admin.products.index') }}" class="bg-red-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-xl">
                                 Batal
                             </a>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                 Perbarui Produk
                             </button>
                         </div>

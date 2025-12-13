@@ -60,8 +60,8 @@
                                 <span id="selectedCount">0</span> produk dipilih
                             </div>
                             <button type="submit" id="bulkGenerateBtn" disabled
-                                class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
-                                📄 Buat PDF Massal
+                                class="bg-indigo-600 text-white hover:bg-indigo-700  font-bold py-2 px-4 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
+                               Buat PDF Massal
                             </button>
                         </div>
                     </form>

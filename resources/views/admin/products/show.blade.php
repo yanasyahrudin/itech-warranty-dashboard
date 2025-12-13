@@ -15,7 +15,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Product Information -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-6 bg-white">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Informasi Produk</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="mb-4">
@@ -54,18 +54,18 @@
 
             <!-- Stock Received History -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-6 bg-white ">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Riwayat Penerimaan Stok</h3>
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
+                        <table class="min-w-full">
+                            <thead class="bg-gray-100">
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Diterima Oleh</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white">
                                 @forelse($product->receivedLogs as $log)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -96,8 +96,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Registrasi Garansi</h3>
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
+                        <table class="min-w-full">
+                            <thead class="bg-gray-100">
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nomor Seri</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pelanggan</th>
@@ -106,7 +106,7 @@
                                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white">
                                 @forelse($product->warrantyRegistrations as $registration)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">

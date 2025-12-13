@@ -6,16 +6,16 @@
                 Print Serial Numbers
             </h2>
             <div class="flex space-x-2">
-                <a href="{{ route('admin.warehouse.received.download', $transaction) }}" 
-                   class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
+                <a href="{{ route('admin.warehouse.received.download', $transaction) }}"
+                    class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
                     📥 Download PDF
                 </a>
-                <button onclick="window.print()" 
-                   class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition">
+                <button onclick="window.print()"
+                    class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition">
                     🖨️ Print
                 </button>
-                <a href="{{ route('admin.warehouse.received.index') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
+                <a href="{{ route('admin.warehouse.received.index') }}"
+                    class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
                     ← Back
                 </a>
             </div>
@@ -24,10 +24,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            
+
             <!-- Print Area -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-8" id="printArea">
-                
+
                 <!-- Header Info -->
                 <div class="mb-8 pb-6 border-b-2 border-gray-300">
                     <div class="flex justify-between items-start">
@@ -36,8 +36,11 @@
                             <p class="text-sm text-gray-600">Transaction ID: #{{ $transaction->id }}</p>
                             <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->format('d M Y, H:i') }}</p>
                         </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-indigo-600 mb-1">iTech</div>
+                        <div class="text-right items-center justify-center">
+                            <!-- <div class="text-2xl font-bold text-indigo-600 mb-1">iTech</div> -->
+                            <div class="">
+                                <img src="https://res.cloudinary.com/dcbryptkx/image/upload/v1765004406/itech-warranty-qr/LogoItech_z57jdx.png" alt="" class="">
+                            </div>
                             <p class="text-xs text-gray-500">Warranty Management System</p>
                         </div>
                     </div>
@@ -69,7 +72,7 @@
                 <!-- Serial Numbers Table -->
                 <div class="mb-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">Generated Serial Numbers ({{ $serialNumbers->count() }})</h3>
-                    
+
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 border border-gray-300">
                             <thead class="bg-gray-50">
@@ -152,15 +155,19 @@
             body * {
                 visibility: hidden;
             }
-            #printArea, #printArea * {
+
+            #printArea,
+            #printArea * {
                 visibility: visible;
             }
+
             #printArea {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
             }
+
             .print\:hidden {
                 display: none !important;
             }

@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-500 leading-tight">
                 {{ __('Detail Registrasi Garansi') }}
             </h2>
             <a href="{{ route('admin.warranty.index') }}" class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">

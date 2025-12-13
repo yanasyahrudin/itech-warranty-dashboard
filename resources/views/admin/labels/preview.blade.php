@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800">Product Label Preview</h2>
+            <h2 class="font-semibold text-xl text-gray-500">Product Label Preview</h2>
             <a href="{{ route('admin.labels.download', $product) }}" class="px-4 py-2 text-gray-600 rounded-xl">Download PDF</a>
         </div>
     </x-slot>

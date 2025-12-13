@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800">Preview Label (Serial)</h2>
+            <h2 class="font-semibold text-xl text-gray-500">Preview Label (Serial)</h2>
             <a href="{{ route('admin.labels.serial.download', $serial) }}" class="px-4 py-2 bg-indigo-600 text-white rounded">
                 Download PDF
             </a>

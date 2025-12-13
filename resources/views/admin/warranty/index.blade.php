@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-500 leading-tight">
                 {{ __('Verifikasi Registrasi Garansi') }}
             </h2>
         </div>

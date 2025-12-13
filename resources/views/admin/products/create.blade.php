@@ -15,7 +15,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-6 bg-white">
                     <h3 class="text-lg font-semibold text-gray-800 mb-6">Informasi Produk</h3>
 
                     <!-- Info Box -->
@@ -43,8 +43,8 @@
                                     Part Number <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" name="part_number" id="part_number" value="{{ old('part_number') }}"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 uppercase @error('part_number') border-red-500 @enderror"
-                                    placeholder="e.g., CPU-INTEL-I7-001"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('part_number') border-red-500 @enderror"
+                                    placeholder="e.g., HP 3 DENSO/1/2350"
                                     required
                                     style="text-transform: uppercase;">
                                 @error('part_number')
@@ -59,8 +59,8 @@
                                     Nama Produk <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('name') border-red-500 @enderror"
-                                    placeholder="e.g., Intel Core i7-12700K Processor"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('name') border-red-500 @enderror"
+                                    placeholder="e.g., PLUNGER SUPPLY PUMP"
                                     required>
                                 @error('name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -74,8 +74,8 @@
                                     Tipe Produk <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" name="type" id="type" value="{{ old('type') }}"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('type') border-red-500 @enderror"
-                                    placeholder="e.g., Processor, Motherboard, RAM"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('type') border-red-500 @enderror"
+                                    placeholder="e.g., SUPPLY PUMP"
                                     list="typesList"
                                     required>
                                 <datalist id="typesList">
@@ -104,7 +104,7 @@
                                 </label>
                                 <input type="number" name="warranty_period_months" id="warranty_period_months"
                                     value="{{ old('warranty_period_months', 12) }}" min="1" max="120"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('warranty_period_months') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('warranty_period_months') border-red-500 @enderror"
                                     required>
                                 @error('warranty_period_months')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -119,7 +119,7 @@
                                 </label>
                                 <input type="number" name="stock_quantity" id="stock_quantity"
                                     value="{{ old('stock_quantity', 0) }}" min="0"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('stock_quantity') border-red-500 @enderror">
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('stock_quantity') border-red-500 @enderror">
                                 @error('stock_quantity')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -132,7 +132,7 @@
                                     Deskripsi (Opsional)
                                 </label>
                                 <textarea name="description" id="description" rows="4"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('description') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('description') border-red-500 @enderror"
                                     placeholder="Tambahkan detail produk, spesifikasi, atau catatan...">{{ old('description') }}</textarea>
                                 @error('description')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -142,7 +142,7 @@
                         </div>
 
                         <!-- Submit Buttons -->
-                        <div class="flex items-center justify-between pt-6 mt-6 border-t border-gray-200">
+                        <div class="flex items-center justify-between pt-6 mt-6 ">
                             <a href="{{ route('admin.products.index') }}"
                                 class="text-red-600 hover:text-gray-900 font-medium text-sm">
                                 Batal

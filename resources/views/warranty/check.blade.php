@@ -56,12 +56,12 @@
                                 id="serial_number"
                                 placeholder="e.g., CASE-FULL-TOWER-01-00001"
                                 value="{{ old('serial_number') }}"
-                                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror"
+                                class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)] @error('serial_number') border-red-500 @enderror"
                                 style="text-transform: uppercase;"
                                 autocomplete="off"
                                 required>
                             <button type="submit"
-                                class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-xl transition duration-150">
+                                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-xl transition duration-150">
                                 Search
                             </button>
                         </div>

@@ -27,21 +27,21 @@
             <!-- Name -->
             <div>
                 <label for="name" :value="__('Name')" class="block text-gray-700 mb-2 text-sm">Nama Lengkap</label>
-                <input id="name" class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" name="name" :value="old('name')" placeholder="Masukkan nama lengkap" required autofocus autocomplete="name" />
+                <input id="name" class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" type="text" name="name" :value="old('name')" placeholder="Masukkan nama lengkap" required autofocus autocomplete="name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
                 <label for="email" :value="__('Email')" class="block text-gray-700 mb-2 text-sm">Email</label>
-                <input id="email" class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" type="email" name="email" :value="old('email')" placeholder="Masukkan email" required autocomplete="username" />
+                <input id="email" class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" type="email" name="email" :value="old('email')" placeholder="Masukkan email" required autocomplete="username" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
                 <label for="password" :value="__('Password')" class="block text-gray-700 mb-2 text-sm">Password</label>
-                <input id="password" class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" type="password" name="password" placeholder="Masukkan password" required autocomplete="new-password" />
+                <input id="password" class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" type="password" name="password" placeholder="Masukkan password" required autocomplete="new-password" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
@@ -49,7 +49,7 @@
             <!-- Confirm Password -->
             <div class="mt-4">
                 <label for="password_confirmation" :value="__('Confirm Password')" class="block text-gray-700 mb-2 text-sm">Konfirmasi Password</label>
-                <input id="password_confirmation" class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" type="password" name="password_confirmation" placeholder="Konfirmasi password" required autocomplete="new-password" />
+                <input id="password_confirmation" class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" type="password" name="password_confirmation" placeholder="Konfirmasi password" required autocomplete="new-password" />
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 

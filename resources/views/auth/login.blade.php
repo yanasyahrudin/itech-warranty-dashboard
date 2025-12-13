@@ -30,14 +30,14 @@
             <!-- Email Address -->
             <div>
                 <label class="block text-gray-700 mb-2 text-sm" for="email" :value="__('Email')">Email</label>
-                <input class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" id="email" type="email" name="email" placeholder="Masukkan email" :value="old('email')" required autofocus autocomplete="username">
+                <input class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" id="email" type="email" name="email" placeholder="Masukkan email" :value="old('email')" required autofocus autocomplete="username">
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
             <div>
                 <label class="block text-gray-700 mb-2 text-sm" for="password" :value="__('Password')">Password</label>
-                <input class="rounded-xl w-full border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" id="password" type="password" name="password" placeholder="Masukkan password" required autocomplete="current-password" />
+                <input class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]" id="password" type="password" name="password" placeholder="Masukkan password" required autocomplete="current-password" />
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 

@@ -49,7 +49,7 @@
                                     Jumlah per Produk
                                 </label>
                                 <input type="number" name="quantity" value="10" min="1" max="100"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]"
                                     required>
                                 <p class="text-xs text-gray-500 mt-1">Jumlah label yang akan dibuat untuk setiap produk yang dipilih</p>
                             </div>

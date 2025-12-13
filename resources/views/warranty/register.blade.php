@@ -70,7 +70,7 @@
                                 Produk <span class="text-red-500">*</span>
                             </label>
                             <select name="product_id" id="product_id"
-                                class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('product_id') border-red-500 @enderror"
+                                class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)] @error('product_id') border-red-500 @enderror"
                                 required>
                                 <option value="">-- Pilih Produk --</option>
                                 @foreach($products as $product)
@@ -115,7 +115,7 @@
                                 </label>
                                 <input type="text" name="serial_number" id="serial_number"
                                     value="{{ old('serial_number') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('serial_number') border-red-500 @enderror uppercase"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('serial_number') border-red-500 @enderror uppercase"
                                     placeholder="e.g., CASE-FULL-TOWER-01-00001"
                                     style="text-transform: uppercase;"
                                     required>
@@ -130,9 +130,10 @@
                                 <label for="purchase_date" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Purchase Date <span class="text-red-500">*</span>
                                 </label>
+
                                 <input type="date" name="purchase_date" id="purchase_date"
                                     value="{{ old('purchase_date') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('purchase_date') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)] @error('purchase_date') border-red-500 @enderror"
                                     required>
                                 @error('purchase_date')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -157,7 +158,7 @@
                                 </label>
                                 <input type="text" name="customer_name" id="customer_name"
                                     value="{{ old('customer_name') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_name') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('customer_name') border-red-500 @enderror"
                                     placeholder="Nama lengkap Anda/Nama perusahaan"
                                     required>
                                 @error('customer_name')
@@ -172,7 +173,7 @@
                                 </label>
                                 <input type="tel" name="customer_phone" id="customer_phone"
                                     value="{{ old('customer_phone') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_phone') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('customer_phone') border-red-500 @enderror"
                                     placeholder="+62 XXX-XXXX-XXXX"
                                     required>
                                 @error('customer_phone')
@@ -187,7 +188,7 @@
                                 </label>
                                 <input type="email" name="customer_email" id="customer_email"
                                     value="{{ old('customer_email') }}"
-                                    class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 @error('customer_email') border-red-500 @enderror"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('customer_email') border-red-500 @enderror"
                                     placeholder="email.anda@contoh.com">
                                 @error('customer_email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -269,7 +270,7 @@
                                 Komentar atau Catatan
                             </label>
                             <textarea name="additional_info" id="additional_info" rows="4"
-                                class="w-full px-4 py-2 border-2  rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                                class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('additional_info') border-red-500 @enderror"
                                 placeholder="Informasi tambahan tentang produk atau garansi Anda...">{{ old('additional_info') }}</textarea>
                             <p class="mt-1 text-xs text-gray-500">Opsional: Tambahkan detail tambahan apa pun</p>
                         </div>

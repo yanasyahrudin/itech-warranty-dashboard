@@ -41,7 +41,7 @@
                             </label>
                             <select name="product_id" 
                                     id="product_id" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
                                     required
                                     onchange="updateStockInfo()">
                                 <option value="">-- Select Product --</option>
@@ -72,7 +72,7 @@
                             <input type="number" 
                                    name="quantity" 
                                    id="quantity" 
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
+                                   class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]"
                                    placeholder="Enter quantity"
                                    value="{{ old('quantity') }}"
                                    min="1"
@@ -88,7 +88,7 @@
                             <input type="text" 
                                    name="destination" 
                                    id="destination" 
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
+                                   class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]"
                                    placeholder="e.g., Store Jakarta, Customer XYZ, Production Line"
                                    value="{{ old('destination') }}"
                                    required>
@@ -103,7 +103,7 @@
                             <textarea name="notes" 
                                       id="notes" 
                                       rows="3"
-                                      class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
+                                      class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]"
                                       placeholder="Additional information...">{{ old('notes') }}</textarea>
                         </div>
 

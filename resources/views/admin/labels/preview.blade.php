@@ -1,49 +1,83 @@
+<!-- filepath: resources/views/admin/labels/preview.blade.php -->
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-500">Product Label Preview</h2>
-            <a href="{{ route('admin.labels.download', $product) }}" class="px-4 py-2 text-gray-600 rounded-xl">Download PDF</a>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800">Preview Label</h2>
+            <a href="{{ route('admin.labels.index') }}" class="text-gray-600 hover:text-gray-900">
+                ← Back
+            </a>
         </div>
     </x-slot>
-    <div class="py-8 max-w-7xl mx-auto mt-6 flex">
-        <div class="bg-white p-6 rounded-xl shadow">
-            <div class="flex items-center gap-6">
-                <img src="data:image/svg+xml;base64,{{ $qrCodeSvgBase64 }}" alt="QR" class="w-36 h-36 rounded-xl" />
-                <div class="px-4">
-                    <div class="text-sm text-gray-600">Registration URL</div>
-                    <div class="font-mono text-xs bg-gray-100 px-2 py-1 rounded-xl">{{ $registrationUrl }}</div>
-                    <div class="mt-4">
-                        <div class="text-sm text-gray-600">Product</div>
-                        <div class="font-semibold">{{ $product->name }} ({{ $product->part_number }})</div>
-                        <div class="text-xs text-gray-500">Type: {{ $product->type }}</div>
-                    </div>
+
+    <div class="py-8 max-w-5xl mx-auto">
+        <!-- Single Label Preview -->
+        <div class="bg-white p-6 rounded shadow mb-6">
+            <h3 class="text-lg font-semibold mb-4">Preview Label Tunggal</h3>
+            <div class="flex items-center gap-6 border-b pb-6 mb-6">
+                <img src="data:image/svg+xml;base64,{{ $qrCodeSvgBase64 }}" alt="QR" class="w-36 h-36 border" />
+                <div>
+                    <div class="text-sm text-gray-600">Produk</div>
+                    <div class="font-semibold text-lg">{{ $product->name }}</div>
+                    <div class="text-xs text-gray-500">{{ $product->part_number }}</div>
+                    <div class="mt-2 text-sm">Type: {{ $product->type }}</div>
+                    <div class="mt-2 font-mono text-sm">URL: {{ $registrationUrl }}</div>
                 </div>
             </div>
+            
+            <a href="{{ route('admin.labels.download', $product) }}" 
+               class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                📥 Download Single Label PDF
+            </a>
+        </div>
 
-            @if(isset($serials) && $serials->count())
-            <div class="mt-6">
-                <div class="text-sm font-semibold text-gray-700 mb-2">Available Serials (pick for serial-specific label):</div>
-                <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    @foreach($serials as $sn)
-                    <a href="{{ route('admin.labels.serial.generate', $sn) }}" class="px-3 py-2 border rounded text-sm hover:bg-gray-50">
-                        {{ $sn->serial_number }}
-                    </a>
-                    @endforeach
-                </div> -->
+        <!-- Bulk Generate by Serials -->
+        <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Generate Multiple Labels (by Serial)</h3>
+            <p class="text-sm text-gray-600 mb-4">Pilih beberapa serial numbers untuk membuat banyak label sekaligus:</p>
 
-                <div class="mt-6">
-                    <ul class="list-disc list-inside text-sm text-gray-600">
-                        @foreach($serials as $sn)
-                        <li class="mb-6">
-                            <a href="{{ route('admin.labels.serial.generate', $sn) }}" class="px-3 py-2 border rounded-xl text-sm hover:bg-gray-50">
-                            {{ $sn->serial_number }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
+            <form action="{{ route('admin.labels.bulk-serials') }}" method="POST">
+                @csrf
+                
+                <div class="mb-6">
+                    @if(isset($serials) && $serials->count())
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto border rounded p-4">
+                            @foreach($serials as $serial)
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="serial_ids[]" value="{{ $serial->id }}" 
+                                           class="rounded border-gray-300">
+                                    <span class="ml-2 text-sm font-mono">{{ $serial->serial_number }}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                        
+                        <div class="mt-4 flex justify-between">
+                            <button type="button" onclick="selectAll()" class="text-sm text-indigo-600 hover:text-indigo-900">
+                                Select All
+                            </button>
+                            <button type="button" onclick="deselectAll()" class="text-sm text-gray-600 hover:text-gray-900">
+                                Clear All
+                            </button>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                                📄 Generate Bulk PDF
+                            </button>
+                        </div>
+                    @else
+                        <p class="text-sm text-gray-500">Tidak ada serial number yang tersedia untuk produk ini.</p>
+                    @endif
                 </div>
-            </div>
-            @endif
+            </form>
         </div>
     </div>
+
+    <script>
+        function selectAll() {
+            document.querySelectorAll('input[name="serial_ids[]"]').forEach(cb => cb.checked = true);
+        }
+        function deselectAll() {
+            document.querySelectorAll('input[name="serial_ids[]"]').forEach(cb => cb.checked = false);
+        }
+    </script>
 </x-app-layout>

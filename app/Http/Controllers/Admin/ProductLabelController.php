@@ -115,24 +115,16 @@ class ProductLabelController extends Controller
     /**
      * Generate label preview for a product (without specific serial)
      */
-    public function generate(\App\Models\Product $product)
+    public function generate(Product $product)
     {
         $registrationUrl = route('warranty.register');
-
-        // Use SVG to avoid Imagick dependency
-        $qrSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(150)
-            ->format('svg')
-            ->generate($registrationUrl);
+        $qrSvg = QrCode::size(150)->format('svg')->generate($registrationUrl);
         $qrCodeSvgBase64 = base64_encode($qrSvg);
 
-        $serials = $product->availableSerialNumbers()->limit(20)->get();
+        // Ambil semua serial available untuk produk ini
+        $serials = $product->availableSerialNumbers()->get();
 
-        return view('admin.labels.preview', [
-            'product' => $product,
-            'qrCodeSvgBase64' => $qrCodeSvgBase64,
-            'registrationUrl' => $registrationUrl,
-            'serials' => $serials,
-        ]);
+        return view('admin.labels.preview', compact('product', 'qrCodeSvgBase64', 'registrationUrl', 'serials'));
     }
 
     /**

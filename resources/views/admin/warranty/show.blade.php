@@ -15,13 +15,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Alerts -->
             @if(session('success'))
-                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <p class="text-sm text-green-800">{{ session('success') }}</p>
                 </div>
             @endif
 
             @if(session('error'))
-                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                     <p class="text-sm text-red-800">{{ session('error') }}</p>
                 </div>
             @endif
@@ -30,7 +30,7 @@
                 <!-- Main Content -->
                 <div class="lg:col-span-2">
                     <!-- Status Card -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="flex justify-between items-start mb-4">
                                 <div>
@@ -57,7 +57,7 @@
                     </div>
 
                     <!-- Registration Information -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <h4 class="text-lg font-semibold text-gray-800 mb-4">Informasi Registrasi</h4>
                             
@@ -127,12 +127,12 @@
                     </div>
 
                     <!-- Invoice Preview -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <h4 class="text-lg font-semibold text-gray-800 mb-4">Dokumen Invoice</h4>
                             
                             @if($registration->invoice_path)
-                                <div class="border rounded-lg p-4 bg-gray-50">
+                                <div class="border rounded-xl p-4 bg-gray-50">
                                     @if(str_ends_with($registration->invoice_path, '.pdf'))
                                         <div class="text-center py-8">
                                             <svg class="h-16 w-16 text-red-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,24 +167,24 @@
 
                     <!-- Warranty Dates (if approved) -->
                     @if($registration->status === 'approved')
-                        <div class="bg-blue-50 border-2 border-blue-200 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-blue-50 border-2 border-blue-200 overflow-hidden shadow-sm sm:rounded-xl">
                             <div class="p-6">
                                 <h4 class="text-lg font-semibold text-blue-900 mb-4">Cakupan Garansi</h4>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <div class="bg-white p-4 rounded-xl border border-blue-200">
                                         <dt class="text-xs font-medium text-blue-600 uppercase">Tanggal Mulai</dt>
                                         <dd class="text-xl font-semibold text-blue-900 mt-1">
                                             {{ $registration->warranty_start_date->format('d M Y') }}
                                         </dd>
                                     </div>
-                                    <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <div class="bg-white p-4 rounded-xl border border-blue-200">
                                         <dt class="text-xs font-medium text-blue-600 uppercase">Tanggal Selesai</dt>
                                         <dd class="text-xl font-semibold text-blue-900 mt-1">
                                             {{ $registration->warranty_end_date->format('d M Y') }}
                                         </dd>
                                     </div>
-                                    <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <div class="bg-white p-4 rounded-xl border border-blue-200">
                                         <dt class="text-xs font-medium text-blue-600 uppercase">Status</dt>
                                         <dd class="text-xl font-semibold mt-1">
                                             @if(now()->lessThanOrEqualTo($registration->warranty_end_date))
@@ -205,11 +205,11 @@
 
                     <!-- Rejection Info (if rejected) -->
                     @if($registration->status === 'rejected')
-                        <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-xl">
                             <div class="p-6">
                                 <h4 class="text-lg font-semibold text-red-900 mb-4">Detail Penolakan</h4>
                                 
-                                <div class="mb-4 p-4 bg-white rounded-lg border border-red-200">
+                                <div class="mb-4 p-4 bg-white rounded-xl border border-red-200">
                                     <p class="text-sm text-red-900 whitespace-pre-wrap">{{ $registration->rejection_reason }}</p>
                                 </div>
 
@@ -221,7 +221,7 @@
                     @endif
 
                     @if($registration->status === 'rejected' && $registration->rejection_reason)
-                        <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                             <h4 class="font-semibold text-red-900 mb-2">Rejection Reason:</h4>
                             <p class="text-sm text-red-800">{{ $registration->rejection_reason }}</p>
                             <p class="text-xs text-red-600 mt-2">
@@ -232,7 +232,7 @@
                     @endif
 
                     @if($registration->status === 'approved')
-                        <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl">
                             <h4 class="font-semibold text-green-900 mb-2">Informasi Garansi</h4>
                             <div class="grid grid-cols-2 gap-4 text-sm">
                                 <div>
@@ -256,7 +256,7 @@
                 <div class="lg:col-span-1">
                     @if($registration->status === 'pending')
                         <!-- Approve Form -->
-                        <div class="bg-green-50 border-2 border-green-200 overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                        <div class="bg-green-50 border-2 border-green-200 overflow-hidden shadow-sm sm:rounded-xl mb-6">
                             <div class="p-6">
                                 <h4 class="text-lg font-semibold text-green-900 mb-4">Registrasi Disetujui</h4>
                                 
@@ -273,7 +273,7 @@
                                     </div>
 
                                     <button type="submit" 
-                                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
+                                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-150">
                                         ✓ Setujui Garansi
                                     </button>
                                 </form>
@@ -281,7 +281,7 @@
                         </div>
 
                         <!-- Reject Form -->
-                        <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-red-50 border-2 border-red-200 overflow-hidden shadow-sm sm:rounded-xl">
                             <div class="p-6">
                                 <h4 class="text-lg font-semibold text-red-900 mb-4">Registrasi Ditolak</h4>
                                 
@@ -301,7 +301,7 @@
 
                                     <button type="button" 
                                         onclick="if(confirm('Apakah Anda yakin ingin menolak registrasi ini?')) { document.getElementById('rejectForm').submit(); }"
-                                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
+                                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-150">
                                         ✗ Tolak Garansi
                                     </button>
                                 </form>
@@ -309,18 +309,18 @@
                         </div>
                     @else
                         <!-- Already Processed -->
-                        <div class="bg-gray-50 border-2 border-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-gray-50 border-2 border-gray-200 overflow-hidden shadow-sm sm:rounded-xl">
                             <div class="p-6">
                                 <h4 class="text-lg font-semibold text-gray-800 mb-4">Status</h4>
                                 
                                 @if($registration->status === 'approved')
-                                    <div class="p-3 bg-green-100 border border-green-300 rounded-lg mb-4">
+                                    <div class="p-3 bg-green-100 border border-green-300 rounded-xl mb-4">
                                         <p class="text-sm text-green-800">
                                             ✓ Garansi ini telah <strong>DISETUJUI</strong>
                                         </p>
                                     </div>
                                 @else
-                                    <div class="p-3 bg-red-100 border border-red-300 rounded-lg mb-4">
+                                    <div class="p-3 bg-red-100 border border-red-300 rounded-xl mb-4">
                                         <p class="text-sm text-red-800">
                                             ✗ Garansi ini telah <strong>DITOLAK</strong>
                                         </p>

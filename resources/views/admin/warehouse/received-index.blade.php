@@ -3,11 +3,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                📥 Warehouse - Product Received
+                Warehouse - Product Received
             </h2>
             <a href="{{ route('admin.warehouse.received.create') }}" 
-               class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition">
-                ➕ New Received
+               class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
+                New Received
             </a>
         </div>
     </x-slot>
@@ -17,33 +17,33 @@
             
             <!-- Success Message -->
             @if(session('success'))
-                <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <p class="text-sm text-green-800">{{ session('success') }}</p>
                 </div>
             @endif
 
             <!-- Statistics -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
                     <div class="text-sm text-gray-600 mb-1">Total Transactions</div>
                     <div class="text-2xl font-bold text-gray-900">{{ $stats['total_transactions'] }}</div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
                     <div class="text-sm text-gray-600 mb-1">Total Quantity</div>
                     <div class="text-2xl font-bold text-indigo-600">{{ number_format($stats['total_quantity']) }}</div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
                     <div class="text-sm text-gray-600 mb-1">Today Transactions</div>
                     <div class="text-2xl font-bold text-green-600">{{ $stats['today_transactions'] }}</div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
                     <div class="text-sm text-gray-600 mb-1">Today Quantity</div>
                     <div class="text-2xl font-bold text-green-600">{{ number_format($stats['today_quantity']) }}</div>
                 </div>
             </div>
 
             <!-- Transactions Table -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Transactions</h3>
 

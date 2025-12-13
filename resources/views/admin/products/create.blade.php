@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-500 leading-tight">
                 {{ __('Add New Product') }}
             </h2>
             <a href="{{ route('admin.products.index') }}"
@@ -14,12 +14,12 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-lg font-semibold text-gray-800 mb-6">Informasi Produk</h3>
 
                     <!-- Info Box -->
-                    <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
                         <div class="flex">
                             <svg class="h-5 w-5 text-blue-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -148,8 +148,8 @@
                                 Batal
                             </a>
                             <button type="submit"
-                                class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-150">
-                                ➕ Buat Produk
+                                class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-xl focus:outline-none focus:shadow-outline transition duration-150">
+                                Buat Produk
                             </button>
                         </div>
                     </form>
@@ -157,7 +157,7 @@
             </div>
 
             <!-- Quick Tips -->
-            <div class="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div class="mt-6 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl p-4">
                 <h4 class="font-semibold text-gray-900 mb-2 text-sm">💡 Quick Tips:</h4>
                 <ul class="text-xs text-gray-700 space-y-1 list-disc list-inside">
                     <li>Part Number harus unik dan akan otomatis diubah menjadi huruf kapital</li>

@@ -3,12 +3,12 @@
     <x-app-layout>
         <x-slot name="header">
             <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-xl text-gray-500 leading-tight">
                     {{ __('Manajemen Produk') }}
                 </h2>
                 <a href="{{ route('admin.products.create') }}"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-gray-600 font-bold py-2 px-4 rounded-lg transition duration-150">
-                    ➕ Tambah Produk Baru
+                    class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-xl transition duration-150">
+                    Tambah Produk Baru
                 </a>
             </div>
         </x-slot>
@@ -19,7 +19,7 @@
                 <!-- Stats Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <!-- Total Products -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-1">
@@ -36,7 +36,7 @@
                     </div>
 
                     <!-- Total Stock -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-1">
@@ -54,7 +54,7 @@
                     </div>
 
                     <!-- Low Stock -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-1">
@@ -72,7 +72,7 @@
                     </div>
 
                     <!-- Product Types -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-1">
@@ -92,7 +92,7 @@
 
                 <!-- Success/Error Messages -->
                 @if(session('success'))
-                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <div class="flex">
                         <svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -103,7 +103,7 @@
                 @endif
 
                 @if(session('error'))
-                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                     <div class="flex">
                         <svg class="h-5 w-5 text-red-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,7 +114,7 @@
                 @endif
 
                 <!-- Products Table -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Daftar Produk</h3>
 

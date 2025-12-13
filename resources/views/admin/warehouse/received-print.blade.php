@@ -7,15 +7,15 @@
             </h2>
             <div class="flex space-x-2">
                 <a href="{{ route('admin.warehouse.received.download', $transaction) }}" 
-                   class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
                     📥 Download PDF
                 </a>
                 <button onclick="window.print()" 
-                   class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition">
+                   class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition">
                     🖨️ Print
                 </button>
                 <a href="{{ route('admin.warehouse.received.index') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition">
+                   class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
                     ← Back
                 </a>
             </div>
@@ -26,7 +26,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Print Area -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8" id="printArea">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-8" id="printArea">
                 
                 <!-- Header Info -->
                 <div class="mb-8 pb-6 border-b-2 border-gray-300">
@@ -44,7 +44,7 @@
                 </div>
 
                 <!-- Product Info -->
-                <div class="mb-8 p-6 bg-indigo-50 border border-indigo-200 rounded-lg">
+                <div class="mb-8 p-6 bg-indigo-50 border border-indigo-200 rounded-xl">
                     <h3 class="text-lg font-semibold text-indigo-900 mb-4">Product Information</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Instructions -->
-                <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg print:hidden">
+                <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-xl print:hidden">
                     <h4 class="font-semibold text-yellow-900 mb-2">📋 Instructions:</h4>
                     <ul class="text-sm text-yellow-800 space-y-1 list-disc list-inside">
                         <li>Print this document and attach serial number stickers to each product unit</li>

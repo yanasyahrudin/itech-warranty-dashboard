@@ -3,10 +3,10 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                📥 New Product Received
+                New Product Received
             </h2>
             <a href="{{ route('admin.warehouse.received.index') }}" 
-               class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition">
+               class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
                 ← Back
             </a>
         </div>
@@ -17,7 +17,7 @@
             
             <!-- Error Messages -->
             @if($errors->any())
-                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
                     <h3 class="text-sm font-semibold text-red-800 mb-2">Errors:</h3>
                     <ul class="list-disc list-inside text-sm text-red-700">
                         @foreach($errors->all() as $error)
@@ -28,7 +28,7 @@
             @endif
 
             <!-- Info Alert -->
-            <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-6">Receive Product Form</h3>
 
@@ -58,7 +58,7 @@
                             </label>
                             <select name="product_id" 
                                     id="product_id" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
                                     required
                                     onchange="showProductInfo()">
                                 <option value="">-- Select Product --</option>
@@ -101,7 +101,7 @@
                             <input type="number" 
                                    name="quantity" 
                                    id="quantity" 
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
                                    placeholder="Enter quantity"
                                    value="{{ old('quantity', 1) }}"
                                    min="1"
@@ -126,18 +126,18 @@
                             <textarea name="notes" 
                                       id="notes" 
                                       rows="3"
-                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
                                       placeholder="Supplier name, purchase order number, etc...">{{ old('notes') }}</textarea>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="flex justify-end space-x-3">
                             <a href="{{ route('admin.warehouse.received.index') }}" 
-                               class="px-6 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-lg transition">
+                               class="px-6 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-xl transition">
                                 Cancel
                             </a>
                             <button type="submit" 
-                                    class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition">
+                                    class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
                                 📥 Receive & Generate Serials
                             </button>
                         </div>

@@ -13,7 +13,7 @@
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <!-- Total -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
@@ -30,7 +30,7 @@
                 </div>
 
                 <!-- Pending -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
@@ -47,7 +47,7 @@
                 </div>
 
                 <!-- Approved -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Rejected -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
@@ -83,7 +83,7 @@
 
             <!-- Alerts -->
             @if(session('success'))
-                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <div class="flex">
                         <svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -94,7 +94,7 @@
             @endif
 
             @if(session('error'))
-                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                     <div class="flex">
                         <svg class="h-5 w-5 text-red-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -105,7 +105,7 @@
             @endif
 
             <!-- Registrations Table -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Semua Registrasi</h3>
 

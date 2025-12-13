@@ -10,13 +10,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Universal QR Code Section -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl mb-6">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">🔗 Universal QR Code untuk Registrasi Garansi</h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- QR Code Preview -->
-                        <div class="border-2 border-gray-300 rounded-lg p-6 text-center bg-gray-50">
+                        <div class="border-2 border-gray-300 rounded-xl p-6 text-center bg-gray-50">
                             <h4 class="font-semibold text-gray-700 mb-4">Pratinjau QR Code</h4>
                             
                             <!-- QR Code Image -->
@@ -31,7 +31,7 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Ukuran QR Code</label>
                                 <select id="qrSize" 
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
                                     onchange="updateQrPreview()">
                                     <option value="150">Kecil (150x150 px)</option>
                                     <option value="200" selected>Sedang (200x200 px)</option>
@@ -50,13 +50,13 @@
                         </div>
 
                         <!-- Download Options -->
-                        <div class="border-2 border-gray-300 rounded-lg p-6 bg-gray-50">
+                        <div class="border-2 border-gray-300 rounded-xl p-6 bg-gray-50">
                             <h4 class="font-semibold text-gray-700 mb-4">Opsi Unduhan</h4>
                             
                             <!-- Format Selection -->
                             <div class="space-y-4">
                                 <!-- PNG Format -->
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg">
+                                <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                     <div class="flex items-center justify-between mb-2">
                                         <div>
                                             <p class="font-semibold text-gray-900">Format PNG</p>
@@ -67,13 +67,13 @@
                                         </svg>
                                     </div>
                                     <a href="{{ route('admin.qr-code.download', ['format' => 'png', 'size' => 300]) }}" 
-                                       class="inline-block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
+                                       class="inline-block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
                                         Unduh PNG
                                     </a>
                                 </div>
 
                                 <!-- SVG Format -->
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg">
+                                <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                     <div class="flex items-center justify-between mb-2">
                                         <div>
                                             <p class="font-semibold text-gray-900">Format SVG</p>
@@ -84,13 +84,13 @@
                                         </svg>
                                     </div>
                                     <a href="{{ route('admin.qr-code.download', ['format' => 'svg', 'size' => 300]) }}" 
-                                       class="inline-block w-full text-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition">
+                                       class="inline-block w-full text-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition">
                                         Unduh SVG
                                     </a>
                                 </div>
 
                                 <!-- PDF Format -->
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg">
+                                <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                     <div class="flex items-center justify-between mb-2">
                                         <div>
                                             <p class="font-semibold text-gray-900">Format PDF</p>
@@ -101,7 +101,7 @@
                                         </svg>
                                     </div>
                                     <a href="{{ route('admin.qr-code.download', ['format' => 'pdf', 'size' => 300]) }}" 
-                                       class="inline-block w-full text-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
+                                       class="inline-block w-full text-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition">
                                         Unduh PDF
                                     </a>
                                 </div>
@@ -112,7 +112,7 @@
             </div>
 
             <!-- Usage Instructions -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">📋 Petunjuk Penggunaan</h3>
                     

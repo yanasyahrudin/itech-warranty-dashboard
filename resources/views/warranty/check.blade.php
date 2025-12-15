@@ -61,7 +61,7 @@
                                 autocomplete="off"
                                 required>
                             <button type="submit"
-                                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-xl transition duration-150">
+                                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-xl transition duration-150">
                                 Search
                             </button>
                         </div>
@@ -71,14 +71,15 @@
                     </div>
                 </form>
 
+
                 <!-- Info Box -->
-                <div class="mt-6 p-4 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl">
-                    <h3 class="font-semibold text-gray-900 mb-2">Cara menemukan Nomor Seri Anda:</h3>
-                    <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
-                        <li>Periksa label produk yang terpasang pada perangkat Anda</li>
-                        <li>Cari kode yang diawali dengan nomor bagian produk</li>
-                        <li>Contoh: <code class="bg-gray-600 text-white px-2 py-1 rounded-xl">CASE-FULL-TOWER-01-00001</code></li>
-                        <li>Anda juga dapat memindai kode QR pada label</li>
+                <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h3 class="font-semibold text-blue-900 mb-2">How to find your Serial Number:</h3>
+                    <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
+                        <li>Check the product label attached to your device</li>
+                        <li>Look for a code starting with the product part number</li>
+                        <li>Example: <code class="bg-blue-100 px-2 py-1 rounded">CASE-FULL-TOWER-01-00001</code></li>
+                        <li>You can also scan the QR code on the label</li>
                     </ul>
                 </div>
             </div>

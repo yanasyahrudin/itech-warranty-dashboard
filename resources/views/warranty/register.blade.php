@@ -61,7 +61,7 @@
                     <!-- Step 1: Product Selection -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">1</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">1</span>
                             Pilih Produk Anda
                         </h2>
 
@@ -103,7 +103,7 @@
                     <!-- Step 2: Serial Number & Purchase Info -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">2</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">2</span>
                             Nomor Seri & Informasi Pembelian
                         </h2>
 
@@ -146,7 +146,8 @@
                     <!-- Step 3: Customer Information -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">3</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">3</span>
+
                             Informasi Anda
                         </h2>
 
@@ -201,7 +202,7 @@
                     <!-- Step 4: Invoice Upload -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">4</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">4</span>
                             Unggah Invoice Pembelian
                         </h2>
 
@@ -245,11 +246,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Invoice Info -->
-                        <div class="p-4 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl">
-                            <h4 class="font-semibold text-gray-900 mb-2">Persyaratan Invoice:</h4>
-                            <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
+                        
+                       <!-- Invoice Info -->
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <h4 class="font-semibold text-blue-900 mb-2">Persyaratan Invoice:</h4>
+                            <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
                                 <li>Invoice harus menunjukkan detail pembelian produk</li>
                                 <li>Tanggal dan jumlah pembelian harus terlihat</li>
                                 <li>Struk/bukti pembelian dapat diterima</li>
@@ -261,7 +262,7 @@
                     <!-- Step 5: Additional Information -->
                     <div class="mb-8">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-600 text-white rounded-full mr-3">5</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-600 text-white rounded-full mr-3">5</span>
                             Informasi Tambahan (Opsional)
                         </h2>
 
@@ -302,14 +303,15 @@
             </div>
 
             <!-- Info Section -->
-            <div class="mt-8 p-6 bg-gradient-to-r from-gray-100 to-gray-300 rounded-xl">
-                <h3 class="font-semibold text-gray-900 mb-2">Apa yang Terjadi Selanjutnya?</h3>
-                <p class="text-sm text-gray-800 mb-3">
-                    Setelah Anda mengirimkan pendaftaran garansi, tim kami akan memverifikasi informasi Anda dalam 1-3 hari kerja.
+            <div class="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h3 class="font-semibold text-yellow-900 mb-2">Apa yang Terjadi Selanjutnya?</h3>
+                <p class="text-sm text-yellow-800 mb-3">
+                    Setelah Anda mengirimkan pendaftaran garansi, tim kami akan memverifikasi informasi Anda dalam 1-2 hari kerja. Anda akan menerima konfirmasi email setelah garansi Anda disetujui.
                 </p>
-                <ul class="text-sm text-gray-800 space-y-1 list-disc list-inside">
-                    <li>Kami akan memverifikasi invoice dan serial number Anda</li>
-                    <li>Status garansi Anda dapat diperiksa kapan saja, cek secara berkala <a href="{{ route('warranty.check') }}" class="font-bold">di sini</a></li>
+                <ul class="text-sm text-yellow-800 space-y-1 list-disc list-inside">
+                    <li>Kami akan memverifikasi invoice dan nomor seri Anda</li>
+                    <li>Anda akan menerima konfirmasi email setelah disetujui</li>
+                    <li>Status garansi Anda dapat diperiksa kapan saja</li>
                 </ul>
             </div>
         </main>

@@ -1,13 +1,14 @@
 <!-- filepath: resources/views/admin/warehouse/issued-index.blade.php -->
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-500 leading-tight">
-                Warehouse - Product Issued
+                Warehouse - Produk Keluar
             </h2>
             <a href="{{ route('admin.warehouse.issued.create') }}" 
                class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
-                New Issued
+                Buat Transaksi Keluar
             </a>
         </div>
     </x-slot>
@@ -25,19 +26,19 @@
             <!-- Statistics -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
-                    <div class="text-sm text-gray-600 mb-1">Total Transactions</div>
+                    <div class="text-sm text-gray-600 mb-1">Total Transaksi</div>
                     <div class="text-2xl font-bold text-gray-900">{{ $stats['total_transactions'] }}</div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
-                    <div class="text-sm text-gray-600 mb-1">Total Quantity</div>
+                    <div class="text-sm text-gray-600 mb-1">Total Kuantitas</div>
                     <div class="text-2xl font-bold text-red-600">{{ number_format($stats['total_quantity']) }}</div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
-                    <div class="text-sm text-gray-600 mb-1">Today Transactions</div>
+                    <div class="text-sm text-gray-600 mb-1">Transaksi Hari Ini</div>
                     <div class="text-2xl font-bold text-orange-600">{{ $stats['today_transactions'] }}</div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6">
-                    <div class="text-sm text-gray-600 mb-1">Today Quantity</div>
+                    <div class="text-sm text-gray-600 mb-1">Kuantitas Hari Ini</div>
                     <div class="text-2xl font-bold text-orange-600">{{ number_format($stats['today_quantity']) }}</div>
                 </div>
             </div>
@@ -45,19 +46,19 @@
             <!-- Transactions Table -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Transactions</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Transaksi Terbaru</h3>
 
                     <div class="overflow-x-auto">
                         <table class="min-w-full ">
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Product</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Destination</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">By</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Notes</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tanggal</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Produk</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kuantitas</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tujuan</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Oleh</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Catatan</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white ">
@@ -91,7 +92,7 @@
                                 @empty
                                 <tr>
                                     <td colspan="7" class="px-6 py-8 text-center text-gray-500">
-                                        No transactions found. Create your first issued transaction!
+                                        Tidak ada transaksi produk keluar yang ditemukan. Buat transaksi baru anda untuk memulai.
                                     </td>
                                 </tr>
                                 @endforelse

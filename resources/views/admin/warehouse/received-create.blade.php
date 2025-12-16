@@ -1,5 +1,4 @@
-<!-- filepath: resources/views/admin/warehouse/received-create.blade.php -->\
-<!-- gunakan bahasa indonesia -->
+<!-- filepath: resources/views/admin/warehouse/received-create.blade.php -->
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -29,7 +28,7 @@
             @endif
 
             <!-- Info Alert -->
-            <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <div class="mb-6 p-4 bg-blue-50 rounded-xl">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -55,7 +54,7 @@
                         <!-- Product Selection -->
                         <div class="mb-6">
                             <label for="product_id" class="block text-sm font-medium text-gray-700 mb-2">
-                                Product <span class="text-red-500">*</span>
+                                Produk <span class="text-red-500">*</span>
                             </label>
                             <!-- kebalikan dari shadow inset -->
                             <select name="product_id"
@@ -63,7 +62,7 @@
                                 class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
                                 required
                                 onchange="showProductInfo()">
-                                <option value="">-- Select Product --</option>
+                                <option value="">-- Pilih Produk --</option>
                                 @foreach($products as $product)
                                 <option value="{{ $product->id }}"
                                     data-name="{{ $product->name }}"
@@ -98,7 +97,7 @@
                         <!-- Quantity -->
                         <div class="mb-6">
                             <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">
-                                Quantity <span class="text-red-500">*</span>
+                                Kuantitas <span class="text-red-500">*</span>
                             </label>
                             <input type="number"
                                 name="quantity"
@@ -136,7 +135,7 @@
                         <div class="flex justify-end space-x-3">
                             <a href="{{ route('admin.warehouse.received.index') }}"
                                 class="px-6 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-xl transition">
-                                Cancel
+                                Batal
                             </a>
                             <button type="submit"
                                 class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">

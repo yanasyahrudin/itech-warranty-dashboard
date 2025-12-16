@@ -66,7 +66,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-gray-500">Approved</p>
+                                <p class="text-sm font-medium text-gray-500">Disetujui</p>
                                 <p class="mt-1 text-2xl font-semibold text-gray-900">{{ $stats['approved_registrations'] }}</p>
                             </div>
                             <div class="flex-shrink-0">
@@ -129,9 +129,9 @@
                                     @if($registration->status === 'pending')
                                         <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
                                     @elseif($registration->status === 'approved')
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Approved</span>
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Disetujui</span>
                                     @else
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Ditolak</span>
                                     @endif
                                     <p class="text-xs text-gray-500 mt-1">{{ $registration->created_at->diffForHumans() }}</p>
                                 </div>

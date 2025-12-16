@@ -3,20 +3,20 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-500 leading-tight">
-                Print Serial Numbers
+                Cetak Serial Number
             </h2>
             <div class="flex space-x-2">
                 <a href="{{ route('admin.warehouse.received.download', $transaction) }}"
                     class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
-                    📥 Download PDF
+                    Unduh PDF
                 </a>
                 <button onclick="window.print()"
                     class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition">
-                    🖨️ Print
+                    Cetak
                 </button>
                 <a href="{{ route('admin.warehouse.received.index') }}"
                     class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
-                    ← Back
+                    ← Kembali
                 </a>
             </div>
         </div>
@@ -32,38 +32,38 @@
                 <div class="mb-8 pb-6 border-b-2 border-gray-300">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Serial Numbers List</h1>
-                            <p class="text-sm text-gray-600">Transaction ID: #{{ $transaction->id }}</p>
-                            <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->format('d M Y, H:i') }}</p>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Daftar Serial Number</h1>
+                            <p class="text-sm text-gray-600">ID Transaksi: #{{ $transaction->id }}</p>
+                            <p class="text-sm text-gray-600">Tanggal: {{ $transaction->created_at->format('d M Y, H:i') }}</p>
                         </div>
                         <div class="text-right items-center justify-center">
                             <!-- <div class="text-2xl font-bold text-indigo-600 mb-1">iTech</div> -->
                             <div class="">
                                 <img src="https://res.cloudinary.com/dcbryptkx/image/upload/v1765004406/itech-warranty-qr/LogoItech_z57jdx.png" alt="" class="">
                             </div>
-                            <p class="text-xs text-gray-500">Warranty Management System</p>
+                            <p class="text-xs text-gray-500">Sistem Manajemen Garansi</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Product Info -->
                 <div class="mb-8 p-6 bg-indigo-50 border border-indigo-200 rounded-xl">
-                    <h3 class="text-lg font-semibold text-indigo-900 mb-4">Product Information</h3>
+                    <h3 class="text-lg font-semibold text-indigo-900 mb-4">Informasi Produk</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <p class="text-xs text-indigo-700 font-semibold">Part Number</p>
                             <p class="text-base font-bold text-indigo-900">{{ $transaction->product->part_number }}</p>
                         </div>
                         <div>
-                            <p class="text-xs text-indigo-700 font-semibold">Product Name</p>
+                            <p class="text-xs text-indigo-700 font-semibold">Nama Produk</p>
                             <p class="text-base font-bold text-indigo-900">{{ $transaction->product->name }}</p>
                         </div>
                         <div>
-                            <p class="text-xs text-indigo-700 font-semibold">Product Type</p>
+                            <p class="text-xs text-indigo-700 font-semibold">Tipe Produk</p>
                             <p class="text-base font-bold text-indigo-900">{{ $transaction->product->type }}</p>
                         </div>
                         <div>
-                            <p class="text-xs text-indigo-700 font-semibold">Quantity Received</p>
+                            <p class="text-xs text-indigo-700 font-semibold">Jumlah Diterima</p>
                             <p class="text-base font-bold text-indigo-900">{{ $transaction->quantity }} units</p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
 
                 <!-- Serial Numbers Table -->
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Generated Serial Numbers ({{ $serialNumbers->count() }})</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Nomor Seri yang Dihasilkan ({{ $serialNumbers->count() }})</h3>
 
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 border border-gray-300">
@@ -87,7 +87,7 @@
                                         Status
                                     </th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Signature
+                                        Tanda Tangan
                                     </th>
                                 </tr>
                             </thead>
@@ -120,12 +120,12 @@
 
                 <!-- Instructions -->
                 <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-xl print:hidden">
-                    <h4 class="font-semibold text-yellow-900 mb-2">📋 Instructions:</h4>
+                    <h4 class="font-semibold text-yellow-900 mb-2">📋 Instruksi:</h4>
                     <ul class="text-sm text-yellow-800 space-y-1 list-disc list-inside">
-                        <li>Print this document and attach serial number stickers to each product unit</li>
-                        <li>Each serial number is unique and cannot be duplicated</li>
-                        <li>Sign in the signature column after attaching the serial number</li>
-                        <li>Keep this document for inventory tracking records</li>
+                        <li>Cetak dokumen ini dan tempelkan stiker nomor seri pada setiap unit produk</li>
+                        <li>Setiap nomor seri unik dan tidak boleh diduplikasi</li>
+                        <li>Berikan tanda tangan di kolom tanda tangan setelah menempelkan nomor seri</li>
+                        <li>Simpan dokumen ini untuk catatan pelacakan inventaris</li>
                     </ul>
                 </div>
 
@@ -133,12 +133,12 @@
                 <div class="mt-12 pt-6 border-t border-gray-300">
                     <div class="grid grid-cols-2 gap-8">
                         <div>
-                            <p class="text-xs text-gray-600 mb-1">Prepared By:</p>
+                            <p class="text-xs text-gray-600 mb-1">Disiapkan Oleh:</p>
                             <div class="border-b border-gray-400 mb-2 pb-8"></div>
                             <p class="text-xs text-gray-600">({{ auth()->user()->name }})</p>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-600 mb-1">Verified By:</p>
+                            <p class="text-xs text-gray-600 mb-1">Diverifikasi Oleh:</p>
                             <div class="border-b border-gray-400 mb-2 pb-8"></div>
                             <p class="text-xs text-gray-600">(Warehouse Manager)</p>
                         </div>

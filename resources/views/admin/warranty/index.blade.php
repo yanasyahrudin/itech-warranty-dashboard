@@ -139,15 +139,15 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 @if($registration->status === 'pending')
                                                     <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                        Pending
+                                                        Menunggu Review
                                                     </span>
                                                 @elseif($registration->status === 'approved')
                                                     <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        Approved
+                                                        Disetujui
                                                     </span>
                                                 @else
                                                     <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                        Rejected
+                                                        Ditolak
                                                     </span>
                                                 @endif
                                             </td>

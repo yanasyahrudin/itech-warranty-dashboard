@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-500 leading-tight">
-            {{ __('Edit Product') }}
+            {{ __('Edit Produk') }}
         </h2>
     </x-slot>
 
@@ -64,7 +64,7 @@
                                 Batal
                             </a>
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
-                                Perbarui Produk
+                                Edit Produk
                             </button>
                         </div>
                     </form>

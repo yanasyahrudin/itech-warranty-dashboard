@@ -3,10 +3,10 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-500 leading-tight">
-                {{ __('Product Details') }}
+                {{ __('Detail Produk') }}
             </h2>
             <a href="{{ route('admin.products.edit', $product) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                Edit Product
+                Edit Produk
             </a>
         </div>
     </x-slot>
@@ -118,15 +118,15 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @if($registration->status === 'pending')
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                Pending
+                                                Menunggu Review
                                             </span>
                                         @elseif($registration->status === 'approved')
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                Approved
+                                                Disetujui
                                             </span>
                                         @else
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                Rejected
+                                                Ditolak
                                             </span>
                                         @endif
                                     </td>

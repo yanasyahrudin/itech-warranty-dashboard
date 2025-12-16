@@ -1,4 +1,5 @@
 <!-- filepath: resources/views/layouts/app.blade.php -->
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -9,8 +10,14 @@
     <title>{{ config('app.name', 'Itech Warranty Dashboard') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">
@@ -29,24 +36,39 @@
         <!-- Page Content -->
         <main>
             @if (session('success'))
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                    <span class="block sm:inline">{{ session('success') }}</span>
-                </div>
-            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: "{{ session('success') }}",
+                        icon: 'success',
+                        confirmButtonColor: '#10b981',
+                        confirmButtonText: 'OK'
+                    });
+                });
+            </script>
             @endif
 
             @if (session('error'))
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <span class="block sm:inline">{{ session('error') }}</span>
-                </div>
-            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        text: "{{ session('error') }}",
+                        icon: 'error',
+                        confirmButtonColor: '#ef4444',
+                        confirmButtonText: 'OK'
+                    });
+                });
+            </script>
             @endif
 
             {{ $slot }}
         </main>
     </div>
+
+    <!-- Stack untuk scripts dari page -->
+    @stack('scripts')
 </body>
 
 </html>

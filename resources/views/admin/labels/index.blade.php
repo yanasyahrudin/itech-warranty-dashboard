@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Info Card -->
-            <div class="mb-6 bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <div class="mb-6 bg-blue-50  rounded-xl p-6">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-8 w-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,7 +24,7 @@
                         <p class="text-sm text-blue-800 mb-2">
                             Semua produk menggunakan <strong>kode QR yang sama</strong> yang terhubung ke formulir registrasi garansi.
                         </p>
-                        <div class="bg-white rounded p-3 mt-3 border border-blue-200">
+                        <div class="bg-white rounded-xl p-3 mt-3 ">
                             <p class="text-xs text-gray-600 mb-1">URL QR Code Universal:</p>
                             <code class="text-sm text-blue-700 font-mono">{{ route('warranty.register') }}</code>
                         </div>

@@ -23,7 +23,7 @@
                             <div class="flex justify-center mb-4">
                                 <img src="{{ route('admin.qr-code.preview', ['size' => 200]) }}"
                                     alt="QR Code"
-                                    class="border-4 border-white shadow-lg rounded"
+                                    class="p-4 shadow-lg rounded-xl"
                                     id="qrCodePreview">
                             </div>
 
@@ -31,7 +31,7 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Ukuran QR Code</label>
                                 <select id="qrSize"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500"
+                                    class="w-full px-3 py-2 rounded-xl focus:outline-none"
                                     onchange="updateQrPreview()">
                                     <option value="150">Kecil (150x150 px)</option>
                                     <option value="200" selected>Sedang (200x200 px)</option>
@@ -41,7 +41,7 @@
                             </div>
 
                             <!-- QR Code Info -->
-                            <div class="p-3 bg-blue-50 border border-blue-200 rounded text-left">
+                            <div class="p-2 bg-blue-50 rounded-xl text-left">
                                 <p class="text-xs text-blue-800">
                                     <strong>URL Tujuan:</strong><br>
                                     <code class="bg-blue-100 px-2 py-1 rounded text-xs">{{ $registrationUrl }}</code>
@@ -117,7 +117,7 @@
                     <h3 class="text-lg font-semibold mb-4">Petunjuk Penggunaan</h3>
 
                     <div class="space-y-4">
-                        <div class="p-4 bg-blue-50 border-l-4 border-blue-500">
+                        <div class="p-4 bg-blue-50 rounded-xl">
                             <h4 class="font-semibold text-blue-900 mb-2">🎯 Tujuan</h4>
                             <p class="text-sm text-blue-800">
                                 QR ini adalah <strong>universal</strong> dan dapat digunakan untuk SEMUA produk.
@@ -125,7 +125,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 bg-green-50 border-l-4 border-green-500">
+                        <div class="p-4 bg-green-50 rounded-xl">
                             <h4 class="font-semibold text-green-900 mb-2">✅ Cara Menggunakan</h4>
                             <ul class="list-disc list-inside text-sm text-green-800 space-y-1">
                                 <li>Unduh kode QR dalam format pilihan Anda</li>
@@ -136,7 +136,7 @@
                             </ul>
                         </div>
 
-                        <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500">
+                        <div class="p-4 bg-yellow-50 rounded-xl">
                             <h4 class="font-semibold text-yellow-900 mb-2">💡 Tips</h4>
                             <ul class="list-disc list-inside text-sm text-yellow-800 space-y-1">
                                 <li>Gunakan format PNG untuk pencetakan berkualitas tinggi</li>

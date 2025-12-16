@@ -20,7 +20,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="bg-white rounded-2xl shadow-xl w-11/12 sm:w-96 p-8">
         <div class="flex flex-col items-center mb-6">
-            <img src="{{ asset('https://res.cloudinary.com/dcbryptkx/image/upload/v1765004709/itech-warranty-qr/Logo_ITech_1_rgfmpq_wgcrrq.png') }}" alt="Itech Warranty QR" class="w-20 mb-3">
+            <img src="{{ asset('https://res.cloudinary.com/dcbryptkx/image/upload/v1765004406/itech-warranty-qr/LogoItech_z57jdx.png') }}" alt="Itech Warranty QR" class="w-28 mb-3">
             <h2 class="text-2xl font-semibold text-gray-800">Login</h2>
             <p class="text-sm text-gray-500">Akses Itech Warranty Dashboard</p>
         </div>

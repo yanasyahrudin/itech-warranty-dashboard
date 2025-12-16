@@ -378,7 +378,7 @@
                         <h3 class="font-semibold text-gray-900 mb-2">Tautan Cepat</h3>
                         <ul class="text-sm text-gray-600 space-y-1">
                             <li><a href="{{ route('warranty.register') }}" class="hover:text-indigo-600">Daftar Garansi</a></li>
-                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Periksa Garansi</a></li>
+                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Cek Garansi</a></li>
                         </ul>
                     </div>
                     <div>

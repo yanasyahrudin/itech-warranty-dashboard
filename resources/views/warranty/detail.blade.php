@@ -7,18 +7,23 @@
     <title>Warranty Details - iTech</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-indigo-50 to-blue-50">
+<body class="bg-gradient-to-r from-gray-400 to-gray-600">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow-sm border-b border-gray-200">
+        <header class="bg-white shadow-sm border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold text-indigo-600">🔧 iTech</div>
-                    <span class="ml-2 text-gray-600">Warranty System</span>
+                    <div class="text-2xl font-bold text-gray-600">
+                        <img src="https://res.cloudinary.com/dcbryptkx/image/upload/v1765004406/itech-warranty-qr/LogoItech_z57jdx.png" alt="" class="h-14 w-auto">
+                    </div>
+                    <span class="hidden lg:block ml-2 text-gray-600">Sistem Garansi</span>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="{{ route('warranty.check') }}" class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">
-                        ← Back to Check
+                    <a href="{{ route('warranty.check') }}" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
+                        Cek Garansi
+                    </a>
+                    <a href="/" class="text-gray-600 hover:text-gray-900 font-medium text-sm">
+                        Beranda
                     </a>
                 </div>
             </div>
@@ -34,35 +39,37 @@
                     <div class="flex items-center mb-6">
                         <div class="text-5xl mr-4">{{ $warrantyStatus['icon'] }}</div>
                         <div>
-                            <span class="px-4 py-2 inline-flex text-sm leading-5 font-semibold rounded-full border {{ $warrantyStatus['badge_class'] }}">
+                            <span class="px-4 py-2 inline-flex text-sm leading-5 font-semibold rounded-full {{ $warrantyStatus['badge_class'] }}">
                                 {{ $warrantyStatus['label'] }}
                             </span>
                             <p class="text-gray-600 mt-2">{{ $warrantyStatus['description'] }}</p>
                         </div>
                     </div>
 
+                    <!-- gunakan bahasa indonesia untuk seluruh teks di halaman ini -->
+
                     <!-- Warranty Timeline (if approved) -->
                     @if($warranty->status === 'approved' && $warranty->warranty_start_date && $warranty->warranty_end_date)
-                        <div class="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg border border-indigo-200">
-                            <h3 class="font-semibold text-gray-900 mb-4">Warranty Coverage Timeline</h3>
+                        <div class="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg">
+                            <h3 class="font-semibold text-gray-900 mb-4">Timeline Cakupan Garansi</h3>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <!-- Start Date -->
-                                <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                    <p class="text-sm text-gray-500 font-medium">Warranty Starts</p>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <p class="text-sm text-gray-500 font-medium">Garansi Dimulai</p>
                                     <p class="text-2xl font-bold text-indigo-600 mt-2">{{ $warranty->warranty_start_date->format('d') }}</p>
                                     <p class="text-sm text-gray-600">{{ $warranty->warranty_start_date->format('M Y') }}</p>
                                 </div>
 
                                 <!-- Duration -->
-                                <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                    <p class="text-sm text-gray-500 font-medium">Coverage Duration</p>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <p class="text-sm text-gray-500 font-medium">Durasi Cakupan</p>
                                     <p class="text-2xl font-bold text-blue-600 mt-2">{{ $warranty->product->warranty_period_months }}</p>
-                                    <p class="text-sm text-gray-600">Months</p>
+                                    <p class="text-sm text-gray-600">Bulan</p>
                                 </div>
 
                                 <!-- End Date -->
-                                <div class="bg-white p-4 rounded-lg border {{ $warranty->isActive() ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50' }}">
+                                <div class="bg-white p-4 rounded-lg {{ $warranty->isActive() ? 'bg-green-50' : 'bg-red-50' }}">
                                     <p class="text-sm {{ $warranty->isActive() ? 'text-green-700' : 'text-red-700' }} font-medium">
                                         Warranty {{ $warranty->isActive() ? 'Expires' : 'Expired' }}
                                     </p>
@@ -76,9 +83,9 @@
                             </div>
 
                             @if($warranty->isActive())
-                                <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                                <div class="mt-4 p-4 bg-green-50 rounded-lg">
                                     <p class="text-sm text-green-800">
-                                        ✅ <strong>{{ $daysRemaining }} days remaining</strong> of warranty coverage
+                                        ✅ <strong>{{ $daysRemaining }} hari tersisa</strong> dari cakupan garansi
                                     </p>
                                 </div>
                             @endif
@@ -111,17 +118,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <!-- Product Information -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Product Information</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Informasi Produk</h3>
                     <div class="space-y-4">
-                        <div class="border-b border-gray-200 pb-3">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Product Name</p>
+                        <div class="pb-3">
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Nama Produk</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->product->name }}</p>
                         </div>
-                        <div class="border-b border-gray-200 pb-3">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Product Type</p>
+                        <div class="pb-3">
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Tipe Produk</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->product->type }}</p>
                         </div>
-                        <div class="border-b border-gray-200 pb-3">
+                        <div class="pb-3">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Part Number</p>
                             <p class="text-base font-semibold text-indigo-600 mt-1">{{ $warranty->product->part_number }}</p>
                         </div>
@@ -134,22 +141,22 @@
 
                 <!-- Customer Information -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Customer Information</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Informasi Pelanggan</h3>
                     <div class="space-y-4">
-                        <div class="border-b border-gray-200 pb-3">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Name</p>
+                        <div class="pb-3">
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Nama</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->customer_name }}</p>
                         </div>
-                        <div class="border-b border-gray-200 pb-3">
+                        <div class="pb-3">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Email</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->customer_email }}</p>
                         </div>
-                        <div class="border-b border-gray-200 pb-3">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Phone</p>
+                        <div class="pb-3">
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Handphone</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->customer_phone }}</p>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Registered Date</p>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Tanggal Terdaftar</p>
                             <p class="text-base font-semibold text-gray-900 mt-1">{{ $warranty->created_at->format('d M Y') }}</p>
                         </div>
                     </div>
@@ -158,7 +165,7 @@
 
             <!-- Registration Status Timeline -->
             <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-6">Registration History</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">Riwayat Pendaftaran</h3>
                 
                 <div class="relative">
                     <!-- Timeline Line -->
@@ -176,7 +183,7 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-semibold text-gray-900">Registration Submitted</p>
+                                <p class="text-sm font-semibold text-gray-900">Pendaftaran Diajukan</p>
                                 <p class="text-xs text-gray-500 mt-1">{{ $warranty->created_at->format('d M Y, H:i') }}</p>
                             </div>
                         </div>
@@ -192,8 +199,8 @@
                                     </div>
                                 </div>
                                 <div class="ml-4">
-                                    <p class="text-sm font-semibold text-gray-900">Awaiting Verification</p>
-                                    <p class="text-xs text-gray-500 mt-1">Typically verified within 1-2 business days</p>
+                                    <p class="text-sm font-semibold text-gray-900">Menunggu Verifikasi</p>
+                                    <p class="text-xs text-gray-500 mt-1">Biasanya diverifikasi dalam 1-3 hari kerja</p>
                                 </div>
                             </div>
                         @elseif($warranty->status === 'approved')
@@ -206,21 +213,21 @@
                                     </div>
                                 </div>
                                 <div class="ml-4">
-                                    <p class="text-sm font-semibold text-gray-900">Registration Approved</p>
+                                    <p class="text-sm font-semibold text-gray-900">Pendaftaran Disetujui</p>
                                     <p class="text-xs text-gray-500 mt-1">{{ $warranty->verified_at?->format('d M Y, H:i') ?? 'Verified' }}</p>
                                 </div>
                             </div>
                         @elseif($warranty->status === 'rejected')
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 border-4 border-white">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
                                         <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                         </svg>
                                     </div>
                                 </div>
                                 <div class="ml-4">
-                                    <p class="text-sm font-semibold text-gray-900">Registration Rejected</p>
+                                    <p class="text-sm font-semibold text-gray-900">Pendaftaran Ditolak</p>
                                     <p class="text-xs text-gray-500 mt-1">{{ $warranty->rejected_at?->format('d M Y, H:i') ?? 'Rejected' }}</p>
                                 </div>
                             </div>
@@ -230,50 +237,50 @@
             </div>
 
             <!-- Support Section -->
-            <div class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                <h3 class="font-semibold text-blue-900 mb-2">📞 Need Help?</h3>
+            <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+                <h3 class="font-semibold text-blue-900 mb-2">📞 Butuh Bantuan?</h3>
                 <p class="text-sm text-blue-800 mb-4">
-                    If you have any questions about your warranty status, please contact our support team:
+                    Jika Anda memiliki pertanyaan tentang status garansi Anda, silakan hubungi tim dukungan kami:
                 </p>
                 <div class="flex flex-col space-y-2">
                     <p class="text-sm text-blue-800"><strong>Email:</strong> support@itech.com</p>
-                    <p class="text-sm text-blue-800"><strong>Phone:</strong> +62 XXX-XXXX-XXXX</p>
-                    <p class="text-sm text-blue-800"><strong>Hours:</strong> Monday - Friday, 09:00 - 17:00 WIB</p>
+                    <p class="text-sm text-blue-800"><strong>Handphone:</strong> +62 811-7531-881</p>
+                    <p class="text-sm text-blue-800"><strong>Jam Kerja:</strong> Senin - Sabtu, 08:00 - 17:30 WIB</p>
                 </div>
             </div>
 
             <!-- Back Button -->
             <div class="mt-8 text-center">
                 <a href="{{ route('warranty.check') }}" 
-                    class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition duration-150">
-                    ← Check Another Serial Number
+                    class="inline-block bg-white hover:bg-gray-100 text-gray-500 font-bold py-3 px-8 rounded-lg transition duration-150">
+                    ← Cek Serial Number Lain
                 </a>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-white border-t border-gray-200 mt-12">
+        <footer class="bg-gradient-to-r from-gray-100 to-gray-300 mt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">About iTech</h3>
-                        <p class="text-sm text-gray-600">Professional warranty management system for quality products</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Tentang Itech Warranty Dashboard</h3>
+                        <p class="text-sm text-gray-600">Sistem manajemen garansi profesional untuk produk berkualitas</p>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Quick Links</h3>
+                        <h3 class="font-semibold text-gray-900 mb-2">Tautan Cepat</h3>
                         <ul class="text-sm text-gray-600 space-y-1">
-                            <li><a href="{{ route('warranty.register') }}" class="hover:text-indigo-600">Register Warranty</a></li>
-                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Check Warranty</a></li>
+                            <li><a href="{{ route('warranty.register') }}" class="hover:text-indigo-600">Daftar Garansi</a></li>
+                            <li><a href="{{ route('warranty.check') }}" class="hover:text-indigo-600">Cek Garansi</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Support</h3>
-                        <p class="text-sm text-gray-600">Email: support@itech.com</p>
-                        <p class="text-sm text-gray-600">Phone: +62 XXX-XXXX-XXXX</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Dukungan</h3>
+                        <p class="text-sm text-gray-600">Email: xxx@xxx.com</p>
+                        <p class="text-sm text-gray-600">Telepon: +62 811-7531-881</p>
                     </div>
                 </div>
-                <div class="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-600">
-                    <p>&copy; {{ date('Y') }} iTech. All rights reserved.</p>
+                <div class="border-gray-200 mt-8 pt-4 text-center text-sm text-gray-600">
+                    <p>&copy; {{ date('Y') }} PT. Itech Persada Nusantara. Semua Hak Dilindungi Undang-Undang.</p>
                 </div>
             </div>
         </footer>

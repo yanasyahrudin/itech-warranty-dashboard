@@ -26,6 +26,7 @@ class WarrantyRegistration extends Model
         'rejected_by',
         'approved_by',
         'approved_at',
+        'created_by',
     ];
 
     protected $casts = [

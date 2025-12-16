@@ -24,6 +24,10 @@ Route::prefix('warranty')->name('warranty.')->group(function () {
     Route::get('/check', [WarrantyCheckController::class, 'index'])->name('check');
     Route::post('/search', [WarrantyCheckController::class, 'search'])->name('search');
     Route::get('/detail/{warranty}', [WarrantyCheckController::class, 'detail'])->name('detail');
+    
+    // Resubmission Routes
+    Route::get('/resubmit/{warranty}', [WarrantyRegistrationController::class, 'edit'])->name('resubmit');
+    Route::post('/resubmit/{warranty}', [WarrantyRegistrationController::class, 'update'])->name('resubmit.update');
 });
 
 Route::middleware(['auth'])->group(function () {

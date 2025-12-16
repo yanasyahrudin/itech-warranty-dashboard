@@ -88,11 +88,20 @@
                     <!-- Rejection Reason (if rejected) -->
                     @if($warranty->status === 'rejected' && $warranty->rejection_reason)
                         <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <h4 class="font-semibold text-red-900 mb-2">⚠️ Registration Rejection Reason</h4>
+                            <h4 class="font-semibold text-red-900 mb-2">⚠️ Alasan Penolakan Pendaftaran</h4>
                             <p class="text-sm text-red-800">{{ $warranty->rejection_reason }}</p>
-                            <p class="text-xs text-red-600 mt-3">
-                                If you believe this is an error, please contact our support team.
-                            </p>
+                            <div class="mt-4 flex items-center justify-between">
+                                <p class="text-xs text-red-600">
+                                    Jika Anda yakin ini adalah kesalahan, silakan hubungi tim dukungan kami.
+                                </p>
+                                <a href="{{ route('warranty.resubmit', $warranty) }}" 
+                                   class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition duration-150">
+                                    <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                    </svg>
+                                    Ajukan Ulang
+                                </a>
+                            </div>
                         </div>
                     @endif
                 </div>

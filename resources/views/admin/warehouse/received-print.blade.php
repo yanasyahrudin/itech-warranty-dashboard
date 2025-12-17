@@ -29,7 +29,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-8" id="printArea">
 
                 <!-- Header Info -->
-                <div class="mb-8 pb-6 border-b-2 border-gray-300">
+                <div class="mb-8 pb-6">
                     <div class="flex justify-between items-start">
                         <div>
                             <h1 class="text-3xl font-bold text-gray-900 mb-2">Daftar Serial Number</h1>
@@ -47,7 +47,7 @@
                 </div>
 
                 <!-- Product Info -->
-                <div class="mb-8 p-6 bg-indigo-50 border border-indigo-200 rounded-xl">
+                <div class="mb-8 p-6 bg-indigo-50 rounded-xl">
                     <h3 class="text-lg font-semibold text-indigo-900 mb-4">Informasi Produk</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -74,16 +74,16 @@
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">Nomor Seri yang Dihasilkan ({{ $serialNumbers->count() }})</h3>
 
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200 border border-gray-300">
-                            <thead class="bg-gray-50">
+                        <table class="min-w-full ">
+                            <thead class="bg-gray-100">
                                 <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                                         No.
                                     </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                                         Serial Number
                                     </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                                         Status
                                     </th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -91,18 +91,18 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white ">
                                 @foreach($serialNumbers as $index => $serial)
                                 <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                         {{ $index + 1 }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap border-r">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-sm font-mono font-bold text-indigo-600">
                                             {{ $serial->serial_number }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap border-r">
+                                    <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                             {{ ucfirst($serial->status) }}
                                         </span>
@@ -119,7 +119,7 @@
                 </div>
 
                 <!-- Instructions -->
-                <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-xl print:hidden">
+                <div class="mt-8 p-4 bg-yellow-50  rounded-xl print:hidden">
                     <h4 class="font-semibold text-yellow-900 mb-2">📋 Instruksi:</h4>
                     <ul class="text-sm text-yellow-800 space-y-1 list-disc list-inside">
                         <li>Cetak dokumen ini dan tempelkan stiker nomor seri pada setiap unit produk</li>
@@ -130,16 +130,16 @@
                 </div>
 
                 <!-- Footer -->
-                <div class="mt-12 pt-6 border-t border-gray-300">
+                <div class="mt-12 pt-6">
                     <div class="grid grid-cols-2 gap-8">
                         <div>
                             <p class="text-xs text-gray-600 mb-1">Disiapkan Oleh:</p>
-                            <div class="border-b border-gray-400 mb-2 pb-8"></div>
+                            <div class=" mb-2 pb-8"></div>
                             <p class="text-xs text-gray-600">({{ auth()->user()->name }})</p>
                         </div>
                         <div>
                             <p class="text-xs text-gray-600 mb-1">Diverifikasi Oleh:</p>
-                            <div class="border-b border-gray-400 mb-2 pb-8"></div>
+                            <div class=" mb-2 pb-8"></div>
                             <p class="text-xs text-gray-600">(Warehouse Manager)</p>
                         </div>
                     </div>

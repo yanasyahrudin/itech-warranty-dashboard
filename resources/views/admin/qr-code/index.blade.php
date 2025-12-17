@@ -31,7 +31,7 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Ukuran QR Code</label>
                                 <select id="qrSize"
-                                    class="w-full px-3 py-2 rounded-xl focus:outline-none"
+                                    class="rounded-xl w-full px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
                                     onchange="updateQrPreview()">
                                     <option value="150">Kecil (150x150 px)</option>
                                     <option value="200" selected>Sedang (200x200 px)</option>

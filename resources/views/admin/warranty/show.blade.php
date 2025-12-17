@@ -290,7 +290,7 @@
                                 <div class="mb-4">
                                     <label for="rejection_reason" class="block text-sm font-medium text-red-700 mb-2">Alasan Penolakan</label>
                                     <textarea name="rejection_reason" id="rejection_reason" rows="4"
-                                        class="w-full rounded-md  shadow-sm focus:border-red-500 focus:ring-red-500 @error('rejection_reason')  @enderror text-sm"
+                                        class="rounded-xl w-full px-3 py-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] @error('rejection_reason')  @enderror text-sm"
                                         placeholder="Jelaskan mengapa registrasi ini ditolak..."
                                         required>{{ old('rejection_reason') }}</textarea>
                                     @error('rejection_reason')

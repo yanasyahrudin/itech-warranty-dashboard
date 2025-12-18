@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iTech Warranty System</title>
+    <title>Itech Warranty Dashboard</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="antialiased">
@@ -19,7 +19,7 @@
 
         <div class="flex items-center justify-center min-h-screen">
             <div class="max-w-4xl mx-auto px-6 text-center">
-                <h1 class="text-6xl font-bold text-white mb-4">iTech Warranty System</h1>
+                <h1 class="text-6xl font-bold text-white mb-4">Itech Warranty Dashboard</h1>
                 <p class="text-xl text-white text-opacity-90 mb-8">
                     Manage your product warranties easily and securely
                 </p>

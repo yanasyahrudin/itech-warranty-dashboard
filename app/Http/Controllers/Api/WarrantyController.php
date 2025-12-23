@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\WarrantyRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class WarrantyController extends Controller
 {
@@ -111,6 +112,7 @@ class WarrantyController extends Controller
 
         return response()->json([
             'exists' => true,
+            'registration_id' => $wr->id,
             'status' => $wr->status,
             'serial_number' => $wr->serial_number,
             'product' => [
@@ -125,5 +127,110 @@ class WarrantyController extends Controller
             'warranty_end_date' => $wr->warranty_end_date,
             'rejection_reason' => $wr->rejection_reason ?? null,
         ]);
+    }
+
+    public function resubmit(Request $request, $id)
+    {
+        try {
+            Log::info('=== Resubmit Request Start ===');
+            Log::info('ID: ' . $id);
+            Log::info('Request data:', $request->except(['invoice', 'captcha_token']));
+            
+            $warranty = WarrantyRegistration::find($id);
+
+            if (!$warranty) {
+                Log::error('Warranty not found: ' . $id);
+                return response()->json(['message' => 'Warranty not found'], 404);
+            }
+
+            Log::info('Current status: ' . $warranty->status);
+
+            // Only allow resubmitting rejected warranties
+            if ($warranty->status !== 'rejected') {
+                Log::error('Invalid status for resubmit: ' . $warranty->status);
+                return response()->json([
+                    'message' => 'Only rejected warranties can be resubmitted. Current status: ' . $warranty->status
+                ], 422);
+            }
+
+            Log::info('Starting validation...');
+
+            $data = $request->validate([
+                'product_id' => ['required', Rule::exists('products', 'id')],
+                'serial_number' => [
+                    'required', 
+                    'string', 
+                    'max:100', 
+                    'regex:/^[A-Z0-9\-]+$/i', 
+                    Rule::unique('warranty_registrations', 'serial_number')->ignore($id)
+                ],
+                'customer_name' => ['required', 'string', 'max:255'],
+                'customer_email' => ['nullable', 'email', 'max:255'],
+                'customer_phone' => ['required', 'string', 'max:20'],
+                'purchase_date' => ['nullable', 'date', 'before_or_equal:today'],
+                'additional_info' => ['nullable', 'string', 'max:1000'],
+                'invoice' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
+                'captcha_token' => ['required', 'string'],
+            ], [
+                'serial_number.regex' => 'Serial number hanya boleh mengandung huruf, angka, dan tanda (-).',
+                'serial_number.unique' => 'Serial number sudah terdaftar.',
+            ]);
+
+            Log::info('Validation passed');
+
+            if (!$this->verifyCaptcha($data['captcha_token'])) {
+                Log::error('Captcha verification failed for resubmit');
+                return response()->json(['message' => 'Captcha verification failed'], 422);
+            }
+
+            Log::info('Captcha verified');
+
+            // Update invoice if new file uploaded
+            $invoicePath = $warranty->invoice_path;
+            if ($request->hasFile('invoice')) {
+                Log::info('New invoice uploaded');
+                // Delete old invoice
+                if ($invoicePath && Storage::disk('public')->exists($invoicePath)) {
+                    Storage::disk('public')->delete($invoicePath);
+                }
+                // Store new invoice
+                $invoicePath = $request->file('invoice')->store('invoices', 'public');
+                Log::info('Invoice stored: ' . $invoicePath);
+            }
+
+            $warranty->update([
+                'product_id' => $data['product_id'],
+                'serial_number' => strtoupper($data['serial_number']),
+                'customer_name' => $data['customer_name'],
+                'customer_email' => $data['customer_email'] ?? null,
+                'customer_phone' => $data['customer_phone'],
+                'purchase_date' => $data['purchase_date'] ?? null,
+                'invoice_path' => $invoicePath,
+                'additional_info' => $data['additional_info'] ?? null,
+                'status' => 'pending',
+                'rejection_reason' => null,
+                'rejected_at' => null,
+            ]);
+
+            Log::info('Warranty resubmitted successfully, ID: ' . $warranty->id);
+
+            return response()->json([
+                'message' => 'Warranty resubmitted successfully. Waiting for admin verification.',
+                'registration_id' => $warranty->id,
+            ], 200);
+
+        } catch (ValidationException $e) {
+            Log::error('Validation error:', $e->errors());
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            Log::error('Resubmit error: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+            return response()->json([
+                'message' => 'Internal server error: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }

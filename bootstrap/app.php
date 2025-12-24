@@ -15,8 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(prepend: [
             \Illuminate\Http\Middleware\HandleCors::class,
         ]);
-        
-        // Disable CSRF untuk API routes
         $middleware->validateCsrfTokens(except: [
             'api/*',
         ]);

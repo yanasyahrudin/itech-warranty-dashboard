@@ -14,21 +14,21 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'email' => 'admin@itech.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Indoteknik898'),
         ]);
 
         // Create Warehouse Admin
         User::create([
             'name' => 'Warehouse Admin',
             'email' => 'warehouse@itech.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Indoteknik898'),
         ]);
 
         // Create Customer Service
         User::create([
             'name' => 'Customer Service',
             'email' => 'cs@itech.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Indoteknik898'),
         ]);
 
         // Call Product Seeder

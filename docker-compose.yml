@@ -1,41 +1,49 @@
-version: '3.8'
+version: "3.8"
+
 services:
   app:
     build:
-      context: ./Backend Server
-      dockerfile: Dockerfile
-    image: itech-warranty-app:latest
+      context: ./docker/app
+    container_name: itech_warranty_dashboard
+    working_dir: /var/www/html
     volumes:
-      - ./:/var/www/html
+      - ./app:/var/www/html
     environment:
-      APP_ENV: production
-      APP_DEBUG: "false"
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: itech_warranty_dashboard
-      DB_USERNAME: root
-      DB_PASSWORD: secret
+      - APP_ENV=production
     depends_on:
       - db
 
-  web:
-    image: nginx:1.22-alpine
+  nginx:
+    image: nginx:alpine
+    container_name: itech_warranty_dashboard_nginx
     ports:
-      - "8000:80"
+      - "8080:80"
     volumes:
-      - ./:/var/www/html:ro
-      - ./Backend Server/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./app:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./logs/nginx:/var/log/nginx
     depends_on:
       - app
 
   db:
-    image: mysql:8.0
+    image: mariadb:10.6
+    container_name: itech_warranty_dashboard_db
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: itech_warranty_dashboard
+      - MARIADB_DATABASE=itech_warranty_dashboard
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=Indoteknik898@
+      - MARIADB_ROOT_PASSWORD=Indoteknik898@
     volumes:
-      - dbdata:/var/lib/mysql
+      - ./data/mariadb:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
-volumes:
-  dbdata:
+  redis:
+    image: redis:alpine
+    container_name: laravel_redis
+    ports:
+      - "6379:6379"
+
+networks:
+  default:
+    name: laravel_net

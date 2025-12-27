@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class WarrantyController extends Controller
 {
@@ -194,4 +196,42 @@ class WarrantyController extends Controller
             ], 500);
         }
     }
+
+    // public function detail($id)
+    // {
+    //     try {
+    //         $warranty = WarrantyRegistration::with('product')->find($id);
+
+    //         if (!$warranty) {
+    //             return response()->json(['message' => 'Warranty registration not found'], 404);
+    //         }
+
+    //         return response()->json([
+    //             'registration_id' => $warranty->id,
+    //             'status' => $warranty->status,
+    //             'serial_number' => $warranty->serial_number,
+    //             'customer_name' => $warranty->customer_name,
+    //             'customer_phone' => $warranty->customer_phone,
+    //             'customer_email' => $warranty->customer_email,
+    //             'purchase_date' => $warranty->purchase_date,
+    //             'invoice_path' => $warranty->invoice_path,
+    //             'additional_info' => $warranty->additional_info,
+    //             'product' => [
+    //                 'id' => $warranty->product->id,
+    //                 'name' => $warranty->product->name,
+    //                 'type' => $warranty->product->type,
+    //                 'part_number' => $warranty->product->part_number,
+    //                 'warranty_period_months' => $warranty->product->warranty_period_months,
+    //             ],
+    //             'approved_at' => $warranty->approved_at,
+    //             'warranty_start_date' => $warranty->warranty_start_date,
+    //             'warranty_end_date' => $warranty->warranty_end_date,
+    //             'rejection_reason' => $warranty->rejection_reason,
+    //             'created_at' => $warranty->created_at,
+    //             'updated_at' => $warranty->updated_at,
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
+    //     }
+    // }
 }
